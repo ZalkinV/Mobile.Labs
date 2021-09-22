@@ -2,4 +2,7 @@
     <string name="app_name">BasicLayout</string>
     <string name="label_text">Some text in label</string>
     <string name="edittext_text">Edit text</string>
+    <string name="label_switch_text">Change label color</string>
+    <string name="button_hidelist_text">Hide list</string>
+    <string name="button_toast_text">Toast</string>
 </resources>
