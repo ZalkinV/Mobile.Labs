@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">BasicLayout</string>
+    <string name="label_text">Some text in label</string>
+    <string name="edittext_text">Edit text</string>
+</resources>
