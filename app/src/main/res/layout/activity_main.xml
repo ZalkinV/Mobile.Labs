@@ -112,7 +112,7 @@
                     android:text="@string/button_hidelist_text" />
 
                 <Button
-                    android:id="@+id/button2"
+                    android:id="@+id/button_toast"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/button_toast_text" />

@@ -5,4 +5,5 @@
     <string name="label_switch_text">Change label color</string>
     <string name="button_hidelist_text">Hide list</string>
     <string name="button_toast_text">Toast</string>
+    <string name="toast_text">Stop pressing me!</string>
 </resources>

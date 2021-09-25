@@ -1,14 +1,10 @@
 package com.itmo.basiclayout
 
-import android.opengl.Visibility
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
-import android.widget.Button
-import android.widget.ListView
-import android.widget.Switch
-import android.widget.TextView
+import android.widget.*
 
 class MainActivity : AppCompatActivity() {
     val switcher: Switch by lazy { findViewById(R.id.switch1) }
@@ -16,6 +12,8 @@ class MainActivity : AppCompatActivity() {
 
     val buttonHideList: Button by lazy { findViewById(R.id.button_hidelist) }
     val listView: ListView by lazy { findViewById(R.id.listview) }
+
+    val buttonToast: Button by lazy { findViewById(R.id.button_toast) }
 
     companion object {
         private const val logInfoTag = "INFO"
@@ -41,6 +39,11 @@ class MainActivity : AppCompatActivity() {
             }
 
             Log.d(logInfoTag, "Button to hide list was clicked")
+        }
+
+        buttonToast.setOnClickListener {
+            Toast.makeText(this, R.string.toast_text, Toast.LENGTH_SHORT).show()
+            Log.d(logInfoTag, "Toast button was clicked")
         }
     }
 }
