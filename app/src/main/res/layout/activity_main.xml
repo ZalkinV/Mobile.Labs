@@ -39,7 +39,8 @@
             android:id="@+id/listview"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.4"></ListView>
+            android:layout_weight="0.4"
+            android:background="@color/listview_background"></ListView>
 
     </LinearLayout>
 
@@ -105,7 +106,7 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button"
+                    android:id="@+id/button_hidelist"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="@string/button_hidelist_text" />
