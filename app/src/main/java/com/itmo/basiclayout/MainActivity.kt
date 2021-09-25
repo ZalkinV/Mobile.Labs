@@ -5,6 +5,7 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class MainActivity : AppCompatActivity() {
     val switcher: Switch by lazy { findViewById(R.id.switch1) }
@@ -14,6 +15,9 @@ class MainActivity : AppCompatActivity() {
     val listView: ListView by lazy { findViewById(R.id.listview) }
 
     val buttonToast: Button by lazy { findViewById(R.id.button_toast) }
+
+    val fab: FloatingActionButton by lazy { findViewById(R.id.floatingActionButton) }
+    val editText: EditText by lazy { findViewById(R.id.editText) }
 
     companion object {
         private const val logInfoTag = "INFO"
@@ -44,6 +48,10 @@ class MainActivity : AppCompatActivity() {
         buttonToast.setOnClickListener {
             Toast.makeText(this, R.string.toast_text, Toast.LENGTH_SHORT).show()
             Log.d(logInfoTag, "Toast button was clicked")
+        }
+
+        fab.setOnClickListener {
+            textView.text = editText.text
         }
     }
 }

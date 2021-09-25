@@ -68,8 +68,8 @@
             android:layout_marginTop="@dimen/margin_standard"
             android:layout_marginBottom="@dimen/margin_standard"
             android:ems="10"
+            android:hint="@string/edittext_hint"
             android:inputType="text"
-            android:text="@string/edittext_text"
             android:textSize="@dimen/textsize_small" />
 
         <LinearLayout
