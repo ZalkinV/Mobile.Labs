@@ -76,6 +76,7 @@
             android:ems="10"
             android:hint="@string/edittext_hint"
             android:inputType="text"
+            android:imeOptions="actionDone"
             android:textSize="@dimen/textsize_small" />
 
         <LinearLayout
