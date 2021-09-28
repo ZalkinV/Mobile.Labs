@@ -37,9 +37,9 @@ class MainActivity : AppCompatActivity() {
 
         buttonHideList.setOnClickListener {
             listView.visibility = when(listView.visibility) {
-                View.GONE -> View.VISIBLE
-                View.VISIBLE -> View.GONE
-                else -> View.GONE
+                View.INVISIBLE -> View.VISIBLE
+                View.VISIBLE -> View.INVISIBLE
+                else -> View.VISIBLE
             }
 
             Log.d(logInfoTag, "Button to hide list was clicked")
