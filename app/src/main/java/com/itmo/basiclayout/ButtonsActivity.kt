@@ -1,5 +1,6 @@
 package com.itmo.basiclayout
 
+import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -22,10 +23,18 @@ class ButtonsActivity : AppCompatActivity() {
 
         buttonTask1.setOnClickListener {
             Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
+            openActivityTask1()
         }
 
         buttonTask2.setOnClickListener {
             Log.d(logInfoTag, "Button 2: Not implemented, yet!")
         }
+    }
+
+    fun openActivityTask1() {
+        val intent = Intent(this, MainActivity::class.java);
+        intent.putExtra("Info", "Very useful information")
+
+        startActivity(intent)
     }
 }

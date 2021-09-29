@@ -20,12 +20,14 @@ class MainActivity : AppCompatActivity() {
     val editText: EditText by lazy { findViewById(R.id.editText) }
 
     companion object {
-        private const val logInfoTag = "INFO"
+        private const val logInfoTag = "TASK1"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+        val fromIntent = intent.getStringExtra("Info")
 
         switcher.setOnCheckedChangeListener { _, isChecked ->
             val colorResource =
@@ -43,6 +45,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             Log.d(logInfoTag, "Button to hide list was clicked")
+            Log.i(logInfoTag, fromIntent.orEmpty())
         }
 
         buttonToast.setOnClickListener {
