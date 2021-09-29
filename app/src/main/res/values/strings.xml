@@ -6,4 +6,8 @@
     <string name="button_hidelist_text">Hide list</string>
     <string name="button_toast_text">Toast</string>
     <string name="toast_text">Stop pressing me!</string>
+
+    <string name="button_task1_text">Task 1</string>
+    <string name="button_task2_text">Task 2</string>
+    <string name="button_task3_text">Task 3</string>
 </resources>
