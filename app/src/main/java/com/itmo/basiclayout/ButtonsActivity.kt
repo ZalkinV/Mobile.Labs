@@ -35,7 +35,7 @@ class ButtonsActivity : AppCompatActivity() {
 
     private fun openTask1Activity() {
         val intent = Intent(this, Task1Activity::class.java);
-        intent.putExtra("Info", "Very useful information")
+        intent.putExtra(IntentKeys.INFO.name, "Very useful information")
 
         startActivity(intent)
     }

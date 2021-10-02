@@ -8,26 +8,26 @@ import android.widget.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Task1Activity : AppCompatActivity() {
-    val switcher: Switch by lazy { findViewById(R.id.switch1) }
-    val textView: TextView by lazy { findViewById(R.id.textView) }
+    private val switcher: Switch by lazy { findViewById(R.id.switch1) }
+    private val textView: TextView by lazy { findViewById(R.id.textView) }
 
-    val buttonHideList: Button by lazy { findViewById(R.id.button_hidelist) }
-    val listView: ListView by lazy { findViewById(R.id.listview) }
+    private val buttonHideList: Button by lazy { findViewById(R.id.button_hidelist) }
+    private val listView: ListView by lazy { findViewById(R.id.listview) }
 
-    val buttonToast: Button by lazy { findViewById(R.id.button_toast) }
+    private val buttonToast: Button by lazy { findViewById(R.id.button_toast) }
 
-    val fab: FloatingActionButton by lazy { findViewById(R.id.floatingActionButton) }
-    val editText: EditText by lazy { findViewById(R.id.editText) }
+    private val fab: FloatingActionButton by lazy { findViewById(R.id.floatingActionButton) }
+    private val editText: EditText by lazy { findViewById(R.id.editText) }
 
     companion object {
-        private const val logInfoTag = "TASK1"
+        private const val logTag = "TASK1"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
 
-        val fromIntent = intent.getStringExtra("Info")
+        val fromIntent = intent.getStringExtra(IntentKeys.INFO.name)
 
         switcher.setOnCheckedChangeListener { _, isChecked ->
             val colorResource =
@@ -44,13 +44,13 @@ class Task1Activity : AppCompatActivity() {
                 else -> View.VISIBLE
             }
 
-            Log.d(logInfoTag, "Button to hide list was clicked")
-            Log.i(logInfoTag, fromIntent.orEmpty())
+            Log.d(logTag, "Button to hide list was clicked")
+            Log.i(logTag, "Intent from prev activity: ${fromIntent.orEmpty()}")
         }
 
         buttonToast.setOnClickListener {
             Toast.makeText(this, R.string.toast_text, Toast.LENGTH_SHORT).show()
-            Log.d(logInfoTag, "Toast button was clicked")
+            Log.d(logTag, "Toast button was clicked")
         }
 
         fab.setOnClickListener {
