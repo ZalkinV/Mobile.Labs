@@ -3,7 +3,6 @@ package com.itmo.basiclayout
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.util.Log
 import android.widget.Button
 import android.widget.Toast
 
@@ -14,7 +13,7 @@ class ButtonsActivity : AppCompatActivity() {
     val buttonTask3: Button by lazy { findViewById(R.id.button_task3) }
 
     companion object {
-        private const val logInfoTag = "INFO_BUTTONS"
+        private const val logTag = "BUTTONS"
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,16 +21,19 @@ class ButtonsActivity : AppCompatActivity() {
         setContentView(R.layout.activity_buttons)
 
         buttonTask1.setOnClickListener {
-            Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
-            openActivityTask1()
+            openTask1Activity()
         }
 
         buttonTask2.setOnClickListener {
-            Log.d(logInfoTag, "Button 2: Not implemented, yet!")
+            Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
+        }
+
+        buttonTask3.setOnClickListener {
+            Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
         }
     }
 
-    fun openActivityTask1() {
+    private fun openTask1Activity() {
         val intent = Intent(this, Task1Activity::class.java);
         intent.putExtra("Info", "Very useful information")
 
