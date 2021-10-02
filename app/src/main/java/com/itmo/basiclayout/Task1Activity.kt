@@ -27,8 +27,10 @@ class Task1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
 
-        val fromIntent = intent.getStringExtra(IntentKeys.INFO.name)
+        setListeners()
+    }
 
+    private fun setListeners() {
         switcher.setOnCheckedChangeListener { _, isChecked ->
             val colorResource =
                 if (isChecked) R.color.label_color_switch_true
@@ -44,6 +46,7 @@ class Task1Activity : AppCompatActivity() {
                 else -> View.VISIBLE
             }
 
+            val fromIntent = intent.getStringExtra(IntentKeys.INFO.name)
             Log.d(logTag, "Button to hide list was clicked")
             Log.i(logTag, "Intent from prev activity: ${fromIntent.orEmpty()}")
         }
