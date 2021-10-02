@@ -7,7 +7,7 @@ import android.view.View
 import android.widget.*
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
-class MainActivity : AppCompatActivity() {
+class Task1Activity : AppCompatActivity() {
     val switcher: Switch by lazy { findViewById(R.id.switch1) }
     val textView: TextView by lazy { findViewById(R.id.textView) }
 
@@ -25,7 +25,7 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        setContentView(R.layout.activity_task1)
 
         val fromIntent = intent.getStringExtra("Info")
 
