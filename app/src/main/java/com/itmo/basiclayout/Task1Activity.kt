@@ -27,6 +27,7 @@ class Task1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
 
+        populateListView()
         setListeners()
     }
 
@@ -59,5 +60,11 @@ class Task1Activity : AppCompatActivity() {
         fab.setOnClickListener {
             textView.text = editText.text
         }
+    }
+
+    private fun populateListView() {
+        val values = DataSource().names
+        val adapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, values)
+        listView.adapter = adapter
     }
 }
