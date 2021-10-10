@@ -11,20 +11,20 @@ import com.itmo.basiclayout.sequences.NaturalSequence
 
 class DetailsActivity : AppCompatActivity() {
 
-    private lateinit var imageLabel: TextView
-    private lateinit var description: TextView
-    private lateinit var imageViewIcon: ImageView
+    private lateinit var text_imageLabel: TextView
+    private lateinit var text_description: TextView
+    private lateinit var image_icon: ImageView
 
-    private lateinit var buttonNat: Button
-    private lateinit var textViewNat: TextView
+    private lateinit var button_nat: Button
+    private lateinit var text_nat: TextView
     private val sequenceNatStart = 1L
 
-    private lateinit var buttonFib: Button
-    private lateinit var textViewFib: TextView
+    private lateinit var button_fib: Button
+    private lateinit var text_fib: TextView
     private val sequenceFibStart = 0L
 
-    private lateinit var buttonCol: Button
-    private lateinit var textViewCol: TextView
+    private lateinit var button_col: Button
+    private lateinit var text_col: TextView
     private val sequenceColStart = 1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -42,49 +42,49 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun initializeComponents() {
-        imageLabel = findViewById(R.id.imageLabel)
-        description = findViewById(R.id.description)
-        imageViewIcon = findViewById(R.id.imageViewIcon)
+        text_imageLabel = findViewById(R.id.text_imageLabel)
+        text_description = findViewById(R.id.text_description)
+        image_icon = findViewById(R.id.image_icon)
 
-        buttonNat = findViewById(R.id.buttonNat)
-        textViewNat = findViewById(R.id.textViewNat)
-        textViewNat.text = sequenceNatStart.toString()
+        button_nat = findViewById(R.id.button_nat)
+        text_nat = findViewById(R.id.text_nat)
+        text_nat.text = sequenceNatStart.toString()
 
-        buttonFib = findViewById(R.id.buttonFib)
-        textViewFib = findViewById(R.id.textViewFib)
-        textViewFib.text = sequenceFibStart.toString()
+        button_fib = findViewById(R.id.button_fib)
+        text_fib = findViewById(R.id.text_fib)
+        text_fib.text = sequenceFibStart.toString()
 
-        buttonCol = findViewById(R.id.buttonCol)
-        textViewCol = findViewById(R.id.textViewCol)
-        textViewCol.text = sequenceColStart.toString()
+        button_col = findViewById(R.id.button_col)
+        text_col = findViewById(R.id.text_col)
+        text_col.text = sequenceColStart.toString()
     }
 
     private fun applyListItemDetails(details: ListItemDetails) {
-        imageLabel.text = details.title
-        description.text = details.description
+        text_imageLabel.text = details.title
+        text_description.text = details.description
         val iconId = when(details.icon) {
             IconEnum.SCANNER -> R.drawable.ic_outline_adf_scanner_24
             IconEnum.CLOUD -> R.drawable.ic_outline_cloud_24
             IconEnum.CORONAVIRUS -> R.drawable.ic_outline_coronavirus_24
             IconEnum.DESCRIPTION -> R.drawable.ic_outline_description_24
         }
-        imageViewIcon.setImageResource(iconId)
+        image_icon.setImageResource(iconId)
     }
 
     private fun setListeners() {
         val sequenceNat = NaturalSequence(sequenceNatStart)
-        buttonNat.setOnClickListener {
-            textViewNat.text = sequenceNat.getNext().toString()
+        button_nat.setOnClickListener {
+            text_nat.text = sequenceNat.getNext().toString()
         }
 
         val sequenceFib = FibonacciSequence()
-        buttonFib.setOnClickListener {
-            textViewFib.text = sequenceFib.getNext().toString()
+        button_fib.setOnClickListener {
+            text_fib.text = sequenceFib.getNext().toString()
         }
 
         val sequenceCol = CollatzSequence(sequenceColStart)
-        buttonCol.setOnClickListener {
-            textViewCol.text = sequenceCol.getNext().toString()
+        button_col.setOnClickListener {
+            text_col.text = sequenceCol.getNext().toString()
         }
     }
 }
