@@ -54,7 +54,7 @@
         android:id="@+id/textViewNat"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/details_textViewNat"
+        android:text="@string/details_defaultNumber"
         app:layout_constraintBottom_toTopOf="@+id/buttonNat"
         app:layout_constraintEnd_toEndOf="@+id/buttonNat"
         app:layout_constraintStart_toStartOf="@+id/buttonNat" />
@@ -63,7 +63,7 @@
         android:id="@+id/textViewFib"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/details_textViewFib"
+        android:text="@string/details_defaultNumber"
         app:layout_constraintBottom_toTopOf="@+id/buttonFib"
         app:layout_constraintEnd_toEndOf="@+id/buttonFib"
         app:layout_constraintStart_toStartOf="@+id/buttonFib" />
@@ -72,7 +72,7 @@
         android:id="@+id/textViewCol"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/details_textViewCol"
+        android:text="@string/details_defaultNumber"
         app:layout_constraintBottom_toTopOf="@+id/buttonCol"
         app:layout_constraintEnd_toEndOf="@+id/buttonCol"
         app:layout_constraintStart_toStartOf="@+id/buttonCol" />

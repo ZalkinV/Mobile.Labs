@@ -5,6 +5,9 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.ImageView
 import android.widget.TextView
+import com.itmo.basiclayout.sequences.CollatzSequence
+import com.itmo.basiclayout.sequences.FibonacciSequence
+import com.itmo.basiclayout.sequences.NaturalSequence
 
 class DetailsActivity : AppCompatActivity() {
 
@@ -14,12 +17,15 @@ class DetailsActivity : AppCompatActivity() {
 
     private lateinit var buttonNat: Button
     private lateinit var textViewNat: TextView
+    private val sequenceNatStart = 1L
 
     private lateinit var buttonFib: Button
     private lateinit var textViewFib: TextView
+    private val sequenceFibStart = 0L
 
     private lateinit var buttonCol: Button
     private lateinit var textViewCol: TextView
+    private val sequenceColStart = 1L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -42,12 +48,15 @@ class DetailsActivity : AppCompatActivity() {
 
         buttonNat = findViewById(R.id.buttonNat)
         textViewNat = findViewById(R.id.textViewNat)
+        textViewNat.text = sequenceNatStart.toString()
 
         buttonFib = findViewById(R.id.buttonFib)
         textViewFib = findViewById(R.id.textViewFib)
+        textViewFib.text = sequenceFibStart.toString()
 
         buttonCol = findViewById(R.id.buttonCol)
         textViewCol = findViewById(R.id.textViewCol)
+        textViewCol.text = sequenceColStart.toString()
     }
 
     private fun applyListItemDetails(details: ListItemDetails) {
@@ -63,22 +72,19 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        var sequenceNat = 1;
+        val sequenceNat = NaturalSequence(sequenceNatStart)
         buttonNat.setOnClickListener {
-            sequenceNat += 1
-            textViewNat.text = sequenceNat.toString()
+            textViewNat.text = sequenceNat.getNext().toString()
         }
 
-        var sequenceFib = 2;
+        val sequenceFib = FibonacciSequence()
         buttonFib.setOnClickListener {
-            sequenceFib += 2
-            textViewFib.text = sequenceFib.toString()
+            textViewFib.text = sequenceFib.getNext().toString()
         }
 
-        var sequenceCol = 1;
+        val sequenceCol = CollatzSequence(sequenceColStart)
         buttonCol.setOnClickListener {
-            sequenceCol += 3
-            textViewCol.text = sequenceCol.toString()
+            textViewCol.text = sequenceCol.getNext().toString()
         }
     }
 }
