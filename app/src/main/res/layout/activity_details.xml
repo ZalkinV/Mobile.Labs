@@ -15,7 +15,7 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        tools:srcCompat="@drawable/moon_full" />
+        app:srcCompat="@drawable/moon_full" />
 
     <TextView
         android:id="@+id/imageLabel"

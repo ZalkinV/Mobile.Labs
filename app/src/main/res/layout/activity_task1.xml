@@ -29,14 +29,14 @@
                 android:layout_width="100dp"
                 android:layout_height="100dp"
                 android:layout_gravity="top"
-                tools:srcCompat="@drawable/moon_full" />
+                app:srcCompat="@drawable/moon_full" />
 
             <ImageView
                 android:id="@+id/imageView2"
                 android:layout_width="100dp"
                 android:layout_height="40dp"
                 android:layout_gravity="bottom|center_horizontal"
-                tools:srcCompat="@drawable/moon_stages" />
+                app:srcCompat="@drawable/moon_stages" />
         </FrameLayout>
 
         <ListView
