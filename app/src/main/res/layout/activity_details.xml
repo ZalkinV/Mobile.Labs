@@ -7,7 +7,7 @@
     tools:context=".DetailsActivity">
 
     <ImageView
-        android:id="@+id/imageView1"
+        android:id="@+id/imageViewMain"
         android:layout_width="160dp"
         android:layout_height="256dp"
         android:layout_marginStart="16dp"
@@ -22,11 +22,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
-        android:labelFor="@id/imageView1"
+        android:labelFor="@id/imageViewMain"
         android:text="@string/details_imageLabel"
-        app:layout_constraintEnd_toEndOf="@+id/imageView1"
-        app:layout_constraintStart_toStartOf="@+id/imageView1"
-        app:layout_constraintTop_toBottomOf="@+id/imageView1" />
+        app:layout_constraintEnd_toEndOf="@+id/imageViewMain"
+        app:layout_constraintStart_toStartOf="@+id/imageViewMain"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewMain" />
 
     <TextView
         android:id="@+id/description"
@@ -37,17 +37,17 @@
         android:text="@string/details_textViewDescription"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toEndOf="@+id/imageView1"
-        app:layout_constraintStart_toStartOf="@+id/imageView4"
-        app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+        app:layout_constraintStart_toEndOf="@+id/imageViewMain"
+        app:layout_constraintStart_toStartOf="@+id/imageViewIcon"
+        app:layout_constraintTop_toBottomOf="@+id/imageViewIcon" />
 
     <ImageView
-        android:id="@+id/imageView4"
+        android:id="@+id/imageViewIcon"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        app:layout_constraintStart_toEndOf="@+id/imageView1"
-        app:layout_constraintTop_toTopOf="@+id/imageView1"
+        app:layout_constraintStart_toEndOf="@+id/imageViewMain"
+        app:layout_constraintTop_toTopOf="@+id/imageViewMain"
         app:srcCompat="@android:drawable/btn_star_big_on" />
 
     <TextView
