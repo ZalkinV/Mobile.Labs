@@ -3,4 +3,5 @@
     <dimen name="margin_standard">20dp</dimen>
     <dimen name="textsize_standard">24sp</dimen>
     <dimen name="textsize_small">20sp</dimen>
+    <dimen name="textsize_sequenceNumber">48sp</dimen>
 </resources>
