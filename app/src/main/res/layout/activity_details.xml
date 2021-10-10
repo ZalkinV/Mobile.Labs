@@ -85,7 +85,7 @@
         android:text="@string/details_buttonNat"
         app:layout_constraintEnd_toStartOf="@+id/buttonFib"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/description" />
+        app:layout_constraintTop_toBottomOf="@id/barrier1" />
 
     <Button
         android:id="@+id/buttonFib"
@@ -106,5 +106,13 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/buttonFib"
         app:layout_constraintTop_toTopOf="@+id/buttonFib" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/barrier1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="description,imageLabel"
+        tools:layout_editor_absoluteY="56dp" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
