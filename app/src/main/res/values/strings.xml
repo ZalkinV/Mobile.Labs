@@ -10,4 +10,11 @@
     <string name="button_task1_text">Task 1</string>
     <string name="button_task2_text">Task 2</string>
     <string name="button_task3_text">Task 3</string>
+
+    <string name="details_textViewNat">0</string>
+    <string name="details_textViewFib">1</string>
+    <string name="details_textViewCol">1</string>
+    <string name="details_buttonNat">Natural</string>
+    <string name="details_buttonFib">Fibonacci</string>
+    <string name="details_buttonCol">Collatz</string>
 </resources>
