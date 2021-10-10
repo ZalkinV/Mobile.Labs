@@ -20,13 +20,9 @@ class ButtonsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buttons)
 
-        buttonTask1.setOnClickListener {
-            openTask1Activity()
-        }
+        buttonTask1.setOnClickListener { openTask1Activity() }
 
-        buttonTask2.setOnClickListener {
-            Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
-        }
+        buttonTask2.setOnClickListener { openTask2Activity() }
 
         buttonTask3.setOnClickListener {
             Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
@@ -36,6 +32,13 @@ class ButtonsActivity : AppCompatActivity() {
     private fun openTask1Activity() {
         val intent = Intent(this, Task1Activity::class.java);
         intent.putExtra(IntentKeys.INFO.name, "Very useful information")
+
+        startActivity(intent)
+    }
+
+    private fun openTask2Activity() {
+        val intent = Intent(this, DetailsActivity::class.java);
+        intent.putExtra(IntentKeys.Task1.DETAILS.name, "Class with details")
 
         startActivity(intent)
     }
