@@ -25,7 +25,7 @@ class DetailsActivity : AppCompatActivity() {
 
     private lateinit var button_col: Button
     private lateinit var text_col: TextView
-    private val sequenceColStart = 1L
+    private val sequenceColStart = 37L
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
