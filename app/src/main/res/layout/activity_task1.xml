@@ -22,7 +22,8 @@
         <FrameLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_weight="0.6">
+            android:layout_weight="0.6"
+            android:background="@color/black">
 
             <ImageView
                 android:id="@+id/imageView"
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
-            android:background="@color/listview_background"></ListView>
+            android:background="@color/teal_200"></ListView>
 
     </LinearLayout>
 

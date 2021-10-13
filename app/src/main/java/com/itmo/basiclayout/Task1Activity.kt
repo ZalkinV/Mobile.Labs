@@ -30,21 +30,20 @@ class Task1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
 
-        listViewItems.addAll(DataSource().fetchData(10))
-
-        populateListView(listViewItems.map { it.title })
+        initializeComponents()
 
         setListeners()
     }
 
-    private fun setListeners() {
-        switcher.setOnCheckedChangeListener { _, isChecked ->
-            val colorResource =
-                if (isChecked) R.color.label_color_switch_true
-                else R.color.label_color_switch_false
+    private fun initializeComponents() {
+        setSwitcherColor(switcher.isChecked)
 
-            textView.setBackgroundResource(colorResource)
-        }
+        listViewItems.addAll(DataSource().fetchData(10))
+        populateListView(listViewItems.map { it.title })
+    }
+
+    private fun setListeners() {
+        switcher.setOnCheckedChangeListener { _, isChecked -> setSwitcherColor(isChecked) }
 
         buttonHideList.setOnClickListener {
             listView.visibility = when(listView.visibility) {
@@ -79,5 +78,13 @@ class Task1Activity : AppCompatActivity() {
     private fun populateListView(values: List<String>) {
         val adapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, values)
         listView.adapter = adapter
+    }
+
+    private fun setSwitcherColor(isChecked: Boolean) {
+        val colorResource =
+            if (isChecked) R.color.green
+            else R.color.red
+
+        textView.setBackgroundResource(colorResource)
     }
 }
