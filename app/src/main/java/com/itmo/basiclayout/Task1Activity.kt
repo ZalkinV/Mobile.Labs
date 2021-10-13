@@ -30,7 +30,7 @@ class Task1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
 
-        listViewItems.addAll(DataSource().fetchData(4))
+        listViewItems.addAll(DataSource().fetchData(10))
 
         populateListView(listViewItems.map { it.title })
 

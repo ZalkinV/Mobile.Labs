@@ -8,10 +8,9 @@ class DataSource {
     fun fetchData(elementsCount: Int): MutableList<ListItemDetails> {
         val listItems = mutableListOf<ListItemDetails>()
 
-        val iconIndex = Random.nextInt(0, IconEnum.values().size)
-        val icon = IconEnum.values()[iconIndex]
-
         for (i in 1..elementsCount) {
+            val iconIndex = Random.nextInt(0, IconEnum.values().size)
+            val icon = IconEnum.values()[iconIndex]
             listItems.add(ListItemDetails(
                 "Title $i",
                 "Descritpion $i",
