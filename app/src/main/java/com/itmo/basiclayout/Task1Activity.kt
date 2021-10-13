@@ -6,10 +6,11 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
+import androidx.appcompat.widget.SwitchCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 
 class Task1Activity : AppCompatActivity() {
-    private val switcher: Switch by lazy { findViewById(R.id.switch1) }
+    private val switcher: SwitchCompat by lazy { findViewById(R.id.switch1) }
     private val textView: TextView by lazy { findViewById(R.id.textView) }
 
     private val buttonHideList: Button by lazy { findViewById(R.id.button_hidelist) }

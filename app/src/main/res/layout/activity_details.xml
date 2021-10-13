@@ -15,7 +15,8 @@
         android:scaleType="centerCrop"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/moon_full" />
+        app:srcCompat="@drawable/moon_full"
+        android:contentDescription="@string/task1_imageMain_description" />
 
     <TextView
         android:id="@+id/text_imageLabel"
@@ -48,7 +49,8 @@
         android:layout_marginStart="16dp"
         app:layout_constraintStart_toEndOf="@+id/image_main"
         app:layout_constraintTop_toTopOf="@+id/image_main"
-        app:srcCompat="@android:drawable/btn_star_big_on" />
+        app:srcCompat="@android:drawable/btn_star_big_on"
+        android:contentDescription="@string/task1_image_icon_description" />
 
     <TextView
         android:id="@+id/text_nat"
