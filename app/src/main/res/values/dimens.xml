@@ -7,4 +7,5 @@
 
     <dimen name="task1_details_button_width">120dp</dimen>
     <dimen name="task1_details_button_textSize">10sp</dimen>
+    <dimen name="task1_details_buttonText_margin">16dp</dimen>
 </resources>
