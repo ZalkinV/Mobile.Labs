@@ -1,7 +1,8 @@
 package com.itmo.basiclayout.sequences
 
-class NaturalSequence(startValue: Long) {
-    private var value = startValue
+class NaturalSequence(value: Long) {
+    var value = value
+        private set
 
     fun getNext(): Long {
         value += 1

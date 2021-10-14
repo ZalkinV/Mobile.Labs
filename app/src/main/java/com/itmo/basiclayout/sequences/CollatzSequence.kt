@@ -1,7 +1,8 @@
 package com.itmo.basiclayout.sequences
 
-class CollatzSequence(startValue: Long) {
-    private var value = startValue
+class CollatzSequence(value: Long) {
+    var value = value
+        private set
 
     fun getNext(): Long {
         value = if (value % 2 == 0L)

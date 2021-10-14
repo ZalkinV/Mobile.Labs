@@ -53,7 +53,7 @@ class Task1Activity : AppCompatActivity() {
                 else -> View.VISIBLE
             }
 
-            val fromIntent = intent.getStringExtra(IntentKeys.INFO.name)
+            val fromIntent = intent.getStringExtra(IntentKeysEnum.INFO.name)
             Log.d(logTag, "Button to hide list was clicked")
             Log.i(logTag, "Intent from prev activity: ${fromIntent.orEmpty()}")
         }
@@ -70,7 +70,7 @@ class Task1Activity : AppCompatActivity() {
         listView.setOnItemClickListener { _, _, i, _ ->
             val intent = Intent(this, DetailsActivity::class.java)
             val details = listViewItems[i]
-            intent.putExtra(IntentKeys.Task1.DETAILS.name, details)
+            intent.putExtra(IntentKeysEnum.Task1.DETAILS.name, details)
 
             startActivity(intent)
         }

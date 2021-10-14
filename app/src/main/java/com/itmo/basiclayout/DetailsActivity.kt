@@ -17,15 +17,15 @@ class DetailsActivity : AppCompatActivity() {
 
     private lateinit var button_nat: Button
     private lateinit var text_nat: TextView
-    private val sequenceNatStart = 1L
+    private var sequenceNat = NaturalSequence(1L)
 
     private lateinit var button_fib: Button
     private lateinit var text_fib: TextView
-    private val sequenceFibStart = 0L
+    private var sequenceFib = FibonacciSequence(0L, 1L)
 
     private lateinit var button_col: Button
     private lateinit var text_col: TextView
-    private val sequenceColStart = 37L
+    private var sequenceCol = CollatzSequence(37L)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -33,12 +33,32 @@ class DetailsActivity : AppCompatActivity() {
 
         initializeComponents()
 
-        val listItemDetails = intent.getSerializableExtra(IntentKeys.Task1.DETAILS.name)
+        val listItemDetails = intent.getSerializableExtra(IntentKeysEnum.Task1.DETAILS.name)
         if (listItemDetails is ListItemDetails) {
             applyListItemDetails(listItemDetails)
         }
 
         setListeners()
+    }
+
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
+
+        outState.putLong(BundleKeysEnum.Task1.NUM_NAT.name, sequenceNat.value)
+        outState.putLong(BundleKeysEnum.Task1.NUM_FIB_PREV.name, sequenceFib.prevValue)
+        outState.putLong(BundleKeysEnum.Task1.NUM_FIB.name, sequenceFib.value)
+        outState.putLong(BundleKeysEnum.Task1.NUM_COL.name, sequenceCol.value)
+    }
+
+    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
+        super.onRestoreInstanceState(savedInstanceState)
+
+        sequenceNat = NaturalSequence(savedInstanceState.getLong(BundleKeysEnum.Task1.NUM_NAT.name))
+        sequenceFib = FibonacciSequence(
+            savedInstanceState.getLong(BundleKeysEnum.Task1.NUM_FIB_PREV.name),
+            savedInstanceState.getLong(BundleKeysEnum.Task1.NUM_FIB.name))
+        sequenceCol = CollatzSequence(savedInstanceState.getLong(BundleKeysEnum.Task1.NUM_COL.name))
+        displaySequenceNumbers()
     }
 
     private fun initializeComponents() {
@@ -48,15 +68,20 @@ class DetailsActivity : AppCompatActivity() {
 
         button_nat = findViewById(R.id.button_nat)
         text_nat = findViewById(R.id.text_nat)
-        text_nat.text = sequenceNatStart.toString()
 
         button_fib = findViewById(R.id.button_fib)
         text_fib = findViewById(R.id.text_fib)
-        text_fib.text = sequenceFibStart.toString()
 
         button_col = findViewById(R.id.button_col)
         text_col = findViewById(R.id.text_col)
-        text_col.text = sequenceColStart.toString()
+
+        displaySequenceNumbers()
+    }
+
+    private fun displaySequenceNumbers() {
+        text_nat.text = sequenceNat.value.toString()
+        text_fib.text = sequenceFib.prevValue.toString()
+        text_col.text = sequenceCol.value.toString()
     }
 
     private fun applyListItemDetails(details: ListItemDetails) {
@@ -72,17 +97,14 @@ class DetailsActivity : AppCompatActivity() {
     }
 
     private fun setListeners() {
-        val sequenceNat = NaturalSequence(sequenceNatStart)
         button_nat.setOnClickListener {
             text_nat.text = sequenceNat.getNext().toString()
         }
 
-        val sequenceFib = FibonacciSequence()
         button_fib.setOnClickListener {
             text_fib.text = sequenceFib.getNext().toString()
         }
 
-        val sequenceCol = CollatzSequence(sequenceColStart)
         button_col.setOnClickListener {
             text_col.text = sequenceCol.getNext().toString()
         }

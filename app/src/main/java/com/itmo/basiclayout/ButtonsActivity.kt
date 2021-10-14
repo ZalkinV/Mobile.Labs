@@ -31,14 +31,14 @@ class ButtonsActivity : AppCompatActivity() {
 
     private fun openTask1Activity() {
         val intent = Intent(this, Task1Activity::class.java);
-        intent.putExtra(IntentKeys.INFO.name, "Very useful information")
+        intent.putExtra(IntentKeysEnum.INFO.name, "Very useful information")
 
         startActivity(intent)
     }
 
     private fun openTask2Activity() {
         val intent = Intent(this, DetailsActivity::class.java);
-        intent.putExtra(IntentKeys.Task1.DETAILS.name, "Class with details")
+        intent.putExtra(IntentKeysEnum.Task1.DETAILS.name, "Class with details")
 
         startActivity(intent)
     }

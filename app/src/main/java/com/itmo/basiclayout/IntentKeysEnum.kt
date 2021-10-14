@@ -1,6 +1,6 @@
 package com.itmo.basiclayout
 
-enum class IntentKeys {
+enum class IntentKeysEnum {
     INFO
     ;
 
