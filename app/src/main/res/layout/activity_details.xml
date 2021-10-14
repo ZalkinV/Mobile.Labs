@@ -84,19 +84,21 @@
 
     <Button
         android:id="@+id/button_nat"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/task1_details_button_width"
         android:layout_height="wrap_content"
         android:layout_marginTop="128dp"
         android:text="@string/details_buttonNat"
+        android:textSize="@dimen/task1_details_button_textSize"
         app:layout_constraintEnd_toStartOf="@+id/button_fib"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/barrier1" />
 
     <Button
         android:id="@+id/button_fib"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/task1_details_button_width"
         android:layout_height="wrap_content"
         android:text="@string/details_buttonFib"
+        android:textSize="@dimen/task1_details_button_textSize"
         app:layout_constraintBottom_toBottomOf="@+id/button_nat"
         app:layout_constraintEnd_toStartOf="@+id/button_col"
         app:layout_constraintStart_toEndOf="@+id/button_nat"
@@ -104,9 +106,10 @@
 
     <Button
         android:id="@+id/button_col"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/task1_details_button_width"
         android:layout_height="wrap_content"
         android:text="@string/details_buttonCol"
+        android:textSize="@dimen/task1_details_button_textSize"
         app:layout_constraintBottom_toBottomOf="@+id/button_fib"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/button_fib"

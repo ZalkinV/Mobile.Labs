@@ -4,4 +4,7 @@
     <dimen name="textsize_standard">24sp</dimen>
     <dimen name="textsize_small">20sp</dimen>
     <dimen name="textsize_sequenceNumber">48sp</dimen>
+
+    <dimen name="task1_details_button_width">120dp</dimen>
+    <dimen name="task1_details_button_textSize">10sp</dimen>
 </resources>
