@@ -4,7 +4,7 @@
     <string name="label_text">Какой-то текст</string>
     <string name="edittext_hint">Введите текст</string>
     <string name="label_switch_text">Изменить цвет надписи</string>
-    <string name="button_hidelist_text">Скрыть список</string>
+    <string name="button_hideList_text">Скрыть список</string>
     <string name="button_toast_text">Тост</string>
     <string name="toast_text">Текст в тосте</string>
     <string name="button_task1_text">Задание 1</string>

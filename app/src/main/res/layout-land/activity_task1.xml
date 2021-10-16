@@ -79,7 +79,7 @@
                 android:layout_marginTop="@dimen/margin_standard"
                 android:text="@string/label_text"
                 android:textAlignment="center"
-                android:textSize="@dimen/textsize_standard" />
+                android:textSize="@dimen/textSize_standard" />
 
             <EditText
                 android:id="@+id/editText"
@@ -92,7 +92,7 @@
                 android:imeOptions="actionDone"
                 android:importantForAutofill="no"
                 android:inputType="text"
-                android:textSize="@dimen/textsize_small" />
+                android:textSize="@dimen/textSize_small" />
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -111,7 +111,7 @@
                     android:layout_weight="1"
                     android:labelFor="@id/switch1"
                     android:text="@string/label_switch_text"
-                    android:textSize="@dimen/textsize_small" />
+                    android:textSize="@dimen/textSize_small" />
             </LinearLayout>
 
         </LinearLayout>
@@ -129,10 +129,10 @@
                 android:orientation="vertical">
 
                 <Button
-                    android:id="@+id/button_hidelist"
+                    android:id="@+id/button_hideList"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:text="@string/button_hidelist_text" />
+                    android:text="@string/button_hideList_text" />
 
                 <Button
                     android:id="@+id/button_toast"

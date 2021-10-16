@@ -13,7 +13,7 @@ class Task1Activity : AppCompatActivity() {
     private val switcher: SwitchCompat by lazy { findViewById(R.id.switch1) }
     private val textView: TextView by lazy { findViewById(R.id.textView) }
 
-    private val buttonHideList: Button by lazy { findViewById(R.id.button_hidelist) }
+    private val buttonHideList: Button by lazy { findViewById(R.id.button_hideList) }
     private val listView: ListView by lazy { findViewById(R.id.listview) }
 
     private val buttonToast: Button by lazy { findViewById(R.id.button_toast) }
