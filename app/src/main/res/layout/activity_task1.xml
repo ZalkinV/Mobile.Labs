@@ -80,10 +80,10 @@
             android:layout_marginBottom="@dimen/margin_standard"
             android:ems="10"
             android:hint="@string/edittext_hint"
-            android:inputType="text"
             android:imeOptions="actionDone"
-            android:textSize="@dimen/textSize_small"
-            android:importantForAutofill="no" />
+            android:importantForAutofill="no"
+            android:inputType="text"
+            android:textSize="@dimen/textSize_small" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -141,9 +141,11 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="bottom|end"
+                    android:layout_marginEnd="@dimen/margin_standard"
+                    android:layout_marginBottom="@dimen/margin_standard"
                     android:clickable="true"
-                    android:focusable="true"
                     android:contentDescription="@string/task1_fab_description"
+                    android:focusable="true"
                     app:srcCompat="@android:drawable/ic_input_add" />
             </FrameLayout>
 

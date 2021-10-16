@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <dimen name="margin_standard">20dp</dimen>
+    <dimen name="margin_standard">16dp</dimen>
     <dimen name="textSize_standard">24sp</dimen>
     <dimen name="textSize_small">20sp</dimen>
     <dimen name="textSize_sequenceNumber">48sp</dimen>
