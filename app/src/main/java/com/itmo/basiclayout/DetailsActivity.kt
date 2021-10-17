@@ -31,6 +31,7 @@ class DetailsActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_details)
 
+        initializeSequences(savedInstanceState)
         initializeComponents()
 
         val listItemDetails = intent.getParcelableExtra<ListItemDetails>(IntentKeysEnum.Task1.DETAILS.name)
@@ -41,27 +42,27 @@ class DetailsActivity : AppCompatActivity() {
         setListeners()
     }
 
+    private fun initializeSequences(state: Bundle?) {
+        if (state != null) with (state) {
+            sequenceNat = NaturalSequence(
+                getLong(BundleKeysEnum.Task1.Details.NUM_NAT.name))
+            sequenceFib = FibonacciSequence(
+                getLong(BundleKeysEnum.Task1.Details.NUM_FIB_PREV.name),
+                getLong(BundleKeysEnum.Task1.Details.NUM_FIB.name))
+            sequenceCol = CollatzSequence(
+                getLong(BundleKeysEnum.Task1.Details.NUM_COL.name))
+        }
+    }
+
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        outState.putLong(BundleKeysEnum.Task1.Details.NUM_NAT.name, sequenceNat.value)
-        outState.putLong(BundleKeysEnum.Task1.Details.NUM_FIB_PREV.name, sequenceFib.prevValue)
-        outState.putLong(BundleKeysEnum.Task1.Details.NUM_FIB.name, sequenceFib.value)
-        outState.putLong(BundleKeysEnum.Task1.Details.NUM_COL.name, sequenceCol.value)
-    }
-
-    override fun onRestoreInstanceState(savedInstanceState: Bundle) {
-        super.onRestoreInstanceState(savedInstanceState)
-
-        sequenceNat = NaturalSequence(
-            savedInstanceState.getLong(BundleKeysEnum.Task1.Details.NUM_NAT.name))
-        sequenceFib = FibonacciSequence(
-            savedInstanceState.getLong(BundleKeysEnum.Task1.Details.NUM_FIB_PREV.name),
-            savedInstanceState.getLong(BundleKeysEnum.Task1.Details.NUM_FIB.name))
-        sequenceCol = CollatzSequence(
-            savedInstanceState.getLong(BundleKeysEnum.Task1.Details.NUM_COL.name))
-
-        displaySequenceNumbers()
+        outState.apply {
+            putLong(BundleKeysEnum.Task1.Details.NUM_NAT.name, sequenceNat.value)
+            putLong(BundleKeysEnum.Task1.Details.NUM_FIB_PREV.name, sequenceFib.prevValue)
+            putLong(BundleKeysEnum.Task1.Details.NUM_FIB.name, sequenceFib.value)
+            putLong(BundleKeysEnum.Task1.Details.NUM_COL.name, sequenceCol.value)
+        }
     }
 
     private fun initializeComponents() {
@@ -71,19 +72,14 @@ class DetailsActivity : AppCompatActivity() {
 
         button_nat = findViewById(R.id.button_nat)
         text_nat = findViewById(R.id.text_nat)
+        text_nat.text = sequenceNat.value.toString()
 
         button_fib = findViewById(R.id.button_fib)
         text_fib = findViewById(R.id.text_fib)
+        text_fib.text = sequenceFib.prevValue.toString()
 
         button_col = findViewById(R.id.button_col)
         text_col = findViewById(R.id.text_col)
-
-        displaySequenceNumbers()
-    }
-
-    private fun displaySequenceNumbers() {
-        text_nat.text = sequenceNat.value.toString()
-        text_fib.text = sequenceFib.prevValue.toString()
         text_col.text = sequenceCol.value.toString()
     }
 
