@@ -33,8 +33,8 @@ class DetailsActivity : AppCompatActivity() {
 
         initializeComponents()
 
-        val listItemDetails = intent.getSerializableExtra(IntentKeysEnum.Task1.DETAILS.name)
-        if (listItemDetails is ListItemDetails) {
+        val listItemDetails = intent.getParcelableExtra<ListItemDetails>(IntentKeysEnum.Task1.DETAILS.name)
+        if (listItemDetails != null) {
             applyListItemDetails(listItemDetails)
         }
 
