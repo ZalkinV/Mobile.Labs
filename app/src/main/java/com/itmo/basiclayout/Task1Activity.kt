@@ -21,7 +21,7 @@ class Task1Activity : AppCompatActivity() {
     private val fab: FloatingActionButton by lazy { findViewById(R.id.floatingActionButton) }
     private val editText: EditText by lazy { findViewById(R.id.editText) }
 
-    private val listViewItems = mutableListOf<ListItemDetails>()
+    private var listViewItems = listOf<ListItemDetails>()
 
     companion object {
         private const val logTag = "TASK1"
@@ -31,16 +31,40 @@ class Task1Activity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_task1)
 
-        initializeComponents()
+        initializeComponents(savedInstanceState)
 
         setListeners()
     }
 
-    private fun initializeComponents() {
-        setSwitcherColor(switcher.isChecked)
+    override fun onSaveInstanceState(outState: Bundle) {
+        super.onSaveInstanceState(outState)
 
-        listViewItems.addAll(DataSource().fetchData(10))
-        populateListView(listViewItems.map { it.title })
+        outState.apply {
+            putParcelableArrayList(BundleKeysEnum.Task1.LIST_ELEMENTS.name, ArrayList(listViewItems))
+            putInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name, listView.visibility)
+            putString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name, textView.text.toString())
+            putString(BundleKeysEnum.Task1.EDITTEXT_TEXT.name, editText.text.toString())
+            putBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name, switcher.isChecked)
+        }
+    }
+
+    private fun initializeComponents(state: Bundle?) {
+        if (state != null) with(state) {
+            listViewItems = getParcelableArrayList<ListItemDetails>(BundleKeysEnum.Task1.LIST_ELEMENTS.name)?.toList() ?: emptyList()
+            listView.visibility = getInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name)
+            textView.text = getString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name)
+            editText.setText(getString(BundleKeysEnum.Task1.EDITTEXT_TEXT.name))
+            switcher.isChecked = getBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name)
+        } else {
+            fetchData()
+        }
+
+        setSwitcherColor(switcher.isChecked)
+        populateListView()
+    }
+
+    private fun fetchData() {
+        listViewItems = DataSource().fetchData(10)
     }
 
     private fun setListeners() {
@@ -76,7 +100,8 @@ class Task1Activity : AppCompatActivity() {
         }
     }
 
-    private fun populateListView(values: List<String>) {
+    private fun populateListView() {
+        val values = listViewItems.map { it.title }
         val adapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, values)
         listView.adapter = adapter
     }

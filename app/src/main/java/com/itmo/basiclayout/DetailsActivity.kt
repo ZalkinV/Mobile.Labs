@@ -44,20 +44,23 @@ class DetailsActivity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        outState.putLong(BundleKeysEnum.Task1.NUM_NAT.name, sequenceNat.value)
-        outState.putLong(BundleKeysEnum.Task1.NUM_FIB_PREV.name, sequenceFib.prevValue)
-        outState.putLong(BundleKeysEnum.Task1.NUM_FIB.name, sequenceFib.value)
-        outState.putLong(BundleKeysEnum.Task1.NUM_COL.name, sequenceCol.value)
+        outState.putLong(BundleKeysEnum.Task1.Details.NUM_NAT.name, sequenceNat.value)
+        outState.putLong(BundleKeysEnum.Task1.Details.NUM_FIB_PREV.name, sequenceFib.prevValue)
+        outState.putLong(BundleKeysEnum.Task1.Details.NUM_FIB.name, sequenceFib.value)
+        outState.putLong(BundleKeysEnum.Task1.Details.NUM_COL.name, sequenceCol.value)
     }
 
     override fun onRestoreInstanceState(savedInstanceState: Bundle) {
         super.onRestoreInstanceState(savedInstanceState)
 
-        sequenceNat = NaturalSequence(savedInstanceState.getLong(BundleKeysEnum.Task1.NUM_NAT.name))
+        sequenceNat = NaturalSequence(
+            savedInstanceState.getLong(BundleKeysEnum.Task1.Details.NUM_NAT.name))
         sequenceFib = FibonacciSequence(
-            savedInstanceState.getLong(BundleKeysEnum.Task1.NUM_FIB_PREV.name),
-            savedInstanceState.getLong(BundleKeysEnum.Task1.NUM_FIB.name))
-        sequenceCol = CollatzSequence(savedInstanceState.getLong(BundleKeysEnum.Task1.NUM_COL.name))
+            savedInstanceState.getLong(BundleKeysEnum.Task1.Details.NUM_FIB_PREV.name),
+            savedInstanceState.getLong(BundleKeysEnum.Task1.Details.NUM_FIB.name))
+        sequenceCol = CollatzSequence(
+            savedInstanceState.getLong(BundleKeysEnum.Task1.Details.NUM_COL.name))
+
         displaySequenceNumbers()
     }
 
