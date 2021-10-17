@@ -8,6 +8,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.widget.SwitchCompat
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.snackbar.Snackbar
 
 class Task1Activity : AppCompatActivity() {
     private val switcher: SwitchCompat by lazy { findViewById(R.id.switch1) }
@@ -89,6 +90,8 @@ class Task1Activity : AppCompatActivity() {
 
         fab.setOnClickListener {
             textView.text = editText.text
+            Snackbar.make(it, "EditText was changed", Snackbar.LENGTH_SHORT)
+                .show()
         }
 
         listView.setOnItemClickListener { _, _, i, _ ->
