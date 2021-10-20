@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/button_task1"
+        android:title="@string/button_task1_text" />
+
+    <item
+        android:id="@+id/button_task2"
+        android:title="@string/button_task2_text" />
+    <item
+        android:id="@+id/button_task3"
+        android:title="@string/button_task3_text" />
+
+</menu>

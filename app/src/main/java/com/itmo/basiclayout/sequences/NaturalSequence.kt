@@ -1,10 +1,10 @@
 package com.itmo.basiclayout.sequences
 
-class NaturalSequence(value: Long) {
+class NaturalSequence(value: Long): Sequence {
     var value = value
         private set
 
-    fun getNext(): Long {
+    override fun getNext(): Long {
         value += 1
         return value
     }

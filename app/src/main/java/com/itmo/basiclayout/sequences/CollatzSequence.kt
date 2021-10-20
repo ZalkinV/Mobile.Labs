@@ -1,10 +1,10 @@
 package com.itmo.basiclayout.sequences
 
-class CollatzSequence(value: Long) {
+class CollatzSequence(value: Long): Sequence {
     var value = value
         private set
 
-    fun getNext(): Long {
+    override fun getNext(): Long {
         value = if (value % 2 == 0L)
             value / 2
         else
