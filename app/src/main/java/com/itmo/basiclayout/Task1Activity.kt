@@ -65,7 +65,7 @@ class Task1Activity : AppCompatActivity() {
     }
 
     private fun fetchData() {
-        listViewItems = DataSource().fetchData(10)
+        listViewItems = InMemoryDataSource().fetchData(10)
     }
 
     private fun setListeners() {
