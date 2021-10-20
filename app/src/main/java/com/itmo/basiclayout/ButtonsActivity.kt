@@ -3,30 +3,61 @@ package com.itmo.basiclayout
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.widget.Button
+import android.view.MenuItem
 import android.widget.Toast
+import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.drawerlayout.widget.DrawerLayout
+import com.google.android.material.navigation.NavigationView
 
 class ButtonsActivity : AppCompatActivity() {
-
-    val buttonTask1: Button by lazy { findViewById(R.id.button_task1) }
-    val buttonTask2: Button by lazy { findViewById(R.id.button_task2) }
-    val buttonTask3: Button by lazy { findViewById(R.id.button_task3) }
 
     companion object {
         private const val logTag = "BUTTONS"
     }
 
+    private lateinit var drawerLayout: DrawerLayout
+    private lateinit var navigationView: NavigationView
+    private lateinit var drawerToggle: ActionBarDrawerToggle
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buttons)
 
-        buttonTask1.setOnClickListener { openTask1Activity() }
+        initializeDrawer()
+    }
 
-        buttonTask2.setOnClickListener { openTask2Activity() }
+    private fun initializeDrawer() {
+        drawerLayout = findViewById(R.id.drawerLayout)
+        navigationView = findViewById(R.id.navigationView)
 
-        buttonTask3.setOnClickListener {
-            Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
+
+        drawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close)
+        drawerLayout.addDrawerListener(drawerToggle)
+        drawerToggle.syncState()
+
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
+
+        navigationView.setNavigationItemSelectedListener {
+            when (it.itemId) {
+                R.id.button_task1 -> openTask1Activity()
+                R.id.button_task2 -> openTask2Activity()
+                else ->
+                {
+                    Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
+                    return@setNavigationItemSelectedListener false
+                }
+            }
+
+            drawerLayout.closeDrawers()
+            true
         }
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (drawerToggle.onOptionsItemSelected(item))
+            return true
+
+        return super.onOptionsItemSelected(item)
     }
 
     private fun openTask1Activity() {

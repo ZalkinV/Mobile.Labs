@@ -19,4 +19,5 @@
     <string name="task1_fab_description">Установить текст</string>
     <string name="task1_imageMain_description">Main image</string>
     <string name="task1_image_icon_description">Icon</string>
+    <string name="drawer_header_text">Задания</string>
 </resources>
