@@ -2,11 +2,13 @@ package com.itmo.basiclayout
 
 import android.os.Parcel
 import android.os.Parcelable
+import com.itmo.basiclayout.keysEnums.IconEnum
 
 data class ListItemDetails(
     val title: String,
     val description: String,
-    val icon: IconEnum): Parcelable
+    val icon: IconEnum
+): Parcelable
 {
     constructor(parcel: Parcel) : this(
         parcel.readString() ?: "",

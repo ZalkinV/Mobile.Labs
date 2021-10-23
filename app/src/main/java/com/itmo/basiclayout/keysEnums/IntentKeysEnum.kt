@@ -1,4 +1,4 @@
-package com.itmo.basiclayout
+package com.itmo.basiclayout.keysEnums
 
 enum class IntentKeysEnum {
     INFO

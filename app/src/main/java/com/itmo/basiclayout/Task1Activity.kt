@@ -7,7 +7,10 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.android.material.snackbar.Snackbar
+import com.itmo.basiclayout.dataSources.InMemoryDataSource
 import com.itmo.basiclayout.databinding.ActivityTask1Binding
+import com.itmo.basiclayout.keysEnums.BundleKeysEnum
+import com.itmo.basiclayout.keysEnums.IntentKeysEnum
 
 class Task1Activity : AppCompatActivity() {
 

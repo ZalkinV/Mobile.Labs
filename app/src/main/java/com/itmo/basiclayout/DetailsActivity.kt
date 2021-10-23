@@ -3,6 +3,9 @@ package com.itmo.basiclayout
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.itmo.basiclayout.databinding.ActivityDetailsBinding
+import com.itmo.basiclayout.keysEnums.BundleKeysEnum
+import com.itmo.basiclayout.keysEnums.IconEnum
+import com.itmo.basiclayout.keysEnums.IntentKeysEnum
 import com.itmo.basiclayout.sequences.CollatzSequence
 import com.itmo.basiclayout.sequences.FibonacciSequence
 import com.itmo.basiclayout.sequences.NaturalSequence
