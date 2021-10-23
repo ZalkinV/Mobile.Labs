@@ -1,9 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <dimen name="margin_small">8dp</dimen>
     <dimen name="margin_standard">16dp</dimen>
     <dimen name="textSize_standard">24sp</dimen>
     <dimen name="textSize_small">20sp</dimen>
-    <dimen name="textSize_sequenceNumber">48sp</dimen>
+    <dimen name="textSize_big">48sp</dimen>
 
     <dimen name="task1_details_button_width">120dp</dimen>
     <dimen name="task1_details_button_textSize">10sp</dimen>

@@ -8,6 +8,55 @@
     android:layout_gravity="start"
     tools:context=".ButtonsActivity">
 
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <TextView
+            android:id="@+id/textView_coursePoints"
+            android:layout_width="100dp"
+            android:layout_height="wrap_content"
+            android:text="@string/details_defaultNumber"
+            android:textAlignment="center"
+            android:textSize="@dimen/textSize_big"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/button_coursePoints_increase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_add_circle_outline_48"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_coursePoints"
+            app:layout_constraintStart_toEndOf="@+id/textView_coursePoints"
+            app:layout_constraintTop_toTopOf="@+id/textView_coursePoints"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
+
+        <ImageButton
+            android:id="@+id/button_coursePoints_decrease"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/ic_baseline_remove_circle_outline_48"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_coursePoints"
+            app:layout_constraintEnd_toStartOf="@+id/textView_coursePoints"
+            app:layout_constraintTop_toTopOf="@+id/textView_coursePoints"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+        <TextView
+            android:id="@+id/textView_coursePoints_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="@dimen/margin_standard"
+            android:labelFor="@id/textView_coursePoints"
+            android:text="@string/textView_coursePoints_label"
+            android:textSize="@dimen/textSize_standard"
+            app:layout_constraintBottom_toTopOf="@+id/textView_coursePoints"
+            app:layout_constraintEnd_toEndOf="@+id/textView_coursePoints"
+            app:layout_constraintStart_toStartOf="@+id/textView_coursePoints" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
     <com.google.android.material.navigation.NavigationView
         android:id="@+id/navigationView"
         android:layout_width="wrap_content"
