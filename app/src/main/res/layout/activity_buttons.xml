@@ -25,24 +25,26 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <ImageButton
-            android:id="@+id/button_coursePoints_increase"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="@drawable/ic_baseline_add_circle_outline_48"
-            app:layout_constraintBottom_toBottomOf="@+id/textView_coursePoints"
-            app:layout_constraintStart_toEndOf="@+id/textView_coursePoints"
-            app:layout_constraintTop_toTopOf="@+id/textView_coursePoints"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
-
-        <ImageButton
             android:id="@+id/button_coursePoints_decrease"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/ic_baseline_remove_circle_outline_48"
+            android:src="@drawable/ic_baseline_remove_circle_outline_48"
+            android:background="?actionBarItemBackground"
             app:layout_constraintBottom_toBottomOf="@+id/textView_coursePoints"
             app:layout_constraintEnd_toStartOf="@+id/textView_coursePoints"
             app:layout_constraintTop_toTopOf="@+id/textView_coursePoints"
             tools:ignore="ContentDescription,SpeakableTextPresentCheck" />
+
+        <ImageButton
+            android:id="@+id/button_coursePoints_increase"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/ic_baseline_add_circle_outline_48"
+            android:background="?actionBarItemBackground"
+            app:layout_constraintBottom_toBottomOf="@+id/textView_coursePoints"
+            app:layout_constraintStart_toEndOf="@+id/textView_coursePoints"
+            app:layout_constraintTop_toTopOf="@+id/textView_coursePoints"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,ImageContrastCheck" />
 
         <TextView
             android:id="@+id/textView_coursePoints_label"
