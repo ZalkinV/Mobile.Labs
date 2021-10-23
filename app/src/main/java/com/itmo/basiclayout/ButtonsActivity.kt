@@ -58,22 +58,22 @@ class ButtonsActivity : AppCompatActivity() {
         coursePoints = preferences.getInt(PreferencesEnum.Buttons.COURSE_POINTS.name, 0)
     }
 
-    private fun initializeComponents() {
-        binding.textViewCoursePoints.text = coursePoints.toString()
+    private fun initializeComponents() = binding.apply {
+        textViewCoursePoints.text = coursePoints.toString()
     }
 
-    private fun setListeners() {
-        binding.buttonCoursePointsDecrease.setOnClickListener {
+    private fun setListeners() = binding.apply {
+        buttonCoursePointsDecrease.setOnClickListener {
             if (coursePoints > 0)
-                binding.textViewCoursePoints.text = (--coursePoints).toString()
+                textViewCoursePoints.text = (--coursePoints).toString()
         }
 
-        binding.buttonCoursePointsIncrease.setOnClickListener {
+        buttonCoursePointsIncrease.setOnClickListener {
             if (coursePoints < 999)
-                binding.textViewCoursePoints.text = (++coursePoints).toString()
+                textViewCoursePoints.text = (++coursePoints).toString()
         }
 
-        binding.textViewCoursePoints.doOnTextChanged { _, _, _, _ ->
+        textViewCoursePoints.doOnTextChanged { _, _, _, _ ->
             val color = when {
                 coursePoints < 50 -> R.color.red
                 coursePoints < 60 -> R.color.orange
@@ -82,8 +82,8 @@ class ButtonsActivity : AppCompatActivity() {
             }
 
             val newTextViewColor = ResourcesCompat.getColor(resources, color, null)
-            if (newTextViewColor != binding.textViewCoursePoints.currentTextColor)
-                binding.textViewCoursePoints.setTextColor(newTextViewColor)
+            if (newTextViewColor != textViewCoursePoints.currentTextColor)
+                textViewCoursePoints.setTextColor(newTextViewColor)
         }
     }
 
