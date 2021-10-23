@@ -26,6 +26,13 @@ class ButtonsActivity : AppCompatActivity() {
         initializeDrawer()
     }
 
+    /* How to make drawer:
+    https://www.youtube.com/watch?v=zQh-QGGKPw0
+    https://intensecoder.com/android-navigation-drawer-in-kotlin/
+    https://medium.com/@ezichukwuamarachi/using-the-android-navigation-drawer-in-kotlin-6cf2cdd0e42f
+    https://android--code.blogspot.com/2018/03/android-kotlin-navigation-drawer-example.html
+    http://developer.alexanderklimov.ru/android/navigation_drawer_activity.php
+     */
     private fun initializeDrawer() {
         drawerLayout = findViewById(R.id.drawerLayout)
         navigationView = findViewById(R.id.navigationView)
