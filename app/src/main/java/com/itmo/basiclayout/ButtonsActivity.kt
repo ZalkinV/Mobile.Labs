@@ -1,12 +1,15 @@
 package com.itmo.basiclayout
 
+import android.content.Context
 import android.content.Intent
+import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
+import androidx.core.content.edit
 import androidx.drawerlayout.widget.DrawerLayout
 import com.google.android.material.navigation.NavigationView
 
@@ -20,11 +23,28 @@ class ButtonsActivity : AppCompatActivity() {
     private lateinit var navigationView: NavigationView
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
+    private var coursePoints: Int = 0
+    private lateinit var preferences: SharedPreferences
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_buttons)
 
+        initializePreferences()
         initializeDrawer()
+    }
+
+    override fun onStop() {
+        super.onStop()
+
+        preferences.edit(commit = true) {
+            putInt(PreferencesEnum.Buttons.COURSE_POINTS.name, coursePoints)
+        }
+    }
+
+    private fun initializePreferences() {
+        preferences = getSharedPreferences(PreferencesEnum.Buttons.PREF_NAME.name, Context.MODE_PRIVATE)
+        coursePoints = preferences.getInt(PreferencesEnum.Buttons.COURSE_POINTS.name, 0)
     }
 
     /* How to make drawer:
