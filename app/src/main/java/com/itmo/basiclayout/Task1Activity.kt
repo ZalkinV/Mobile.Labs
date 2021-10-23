@@ -78,9 +78,7 @@ class Task1Activity : AppCompatActivity() {
                 else -> View.VISIBLE
             }
 
-            val fromIntent = intent.getStringExtra(IntentKeysEnum.INFO.name)
             Log.d(logTag, "Button to hide list was clicked")
-            Log.i(logTag, "Intent from prev activity: ${fromIntent.orEmpty()}")
         }
 
         buttonToast.setOnClickListener {

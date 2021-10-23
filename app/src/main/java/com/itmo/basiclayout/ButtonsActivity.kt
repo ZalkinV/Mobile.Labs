@@ -3,6 +3,7 @@ package com.itmo.basiclayout
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
@@ -68,16 +69,16 @@ class ButtonsActivity : AppCompatActivity() {
     }
 
     private fun openTask1Activity() {
-        val intent = Intent(this, Task1Activity::class.java);
-        intent.putExtra(IntentKeysEnum.INFO.name, "Very useful information")
+        Log.i(logTag, "Open Task1 activity")
 
+        val intent = Intent(this, Task1Activity::class.java)
         startActivity(intent)
     }
 
     private fun openTask2Activity() {
-        val intent = Intent(this, DetailsActivity::class.java);
-        intent.putExtra(IntentKeysEnum.Task1.DETAILS.name, "Class with details")
+        Log.i(logTag, "Open Task2 activity")
 
+        val intent = Intent(this, DetailsActivity::class.java)
         startActivity(intent)
     }
 }
