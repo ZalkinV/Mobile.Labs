@@ -77,13 +77,13 @@ class Task1Activity : AppCompatActivity() {
         }
 
         buttonToast.setOnClickListener {
-            Toast.makeText(baseContext, R.string.toast_text, Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, getString(R.string.toast_text), Toast.LENGTH_SHORT).show()
             Log.d(logTag, "Toast button was clicked")
         }
 
         floatingActionButton.setOnClickListener {
             textView.text = editText.text
-            Snackbar.make(it, "EditText was changed", Snackbar.LENGTH_SHORT).show()
+            Snackbar.make(it, getString(R.string.task1_snackBar_text), Snackbar.LENGTH_SHORT).show()
         }
 
         listView.setOnItemClickListener { _, _, i, _ ->
