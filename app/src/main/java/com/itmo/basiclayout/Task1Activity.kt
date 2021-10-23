@@ -6,31 +6,23 @@ import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.*
-import androidx.appcompat.widget.SwitchCompat
-import com.google.android.material.floatingactionbutton.FloatingActionButton
 import com.google.android.material.snackbar.Snackbar
+import com.itmo.basiclayout.databinding.ActivityTask1Binding
 
 class Task1Activity : AppCompatActivity() {
-    private val switcher: SwitchCompat by lazy { findViewById(R.id.switch1) }
-    private val textView: TextView by lazy { findViewById(R.id.textView) }
-
-    private val buttonHideList: Button by lazy { findViewById(R.id.button_hideList) }
-    private val listView: ListView by lazy { findViewById(R.id.listview) }
-
-    private val buttonToast: Button by lazy { findViewById(R.id.button_toast) }
-
-    private val fab: FloatingActionButton by lazy { findViewById(R.id.floatingActionButton) }
-    private val editText: EditText by lazy { findViewById(R.id.editText) }
-
-    private var listViewItems = listOf<ListItemDetails>()
 
     companion object {
         private const val logTag = "TASK1"
     }
 
+    private lateinit var binding: ActivityTask1Binding
+
+    private var listViewItems = listOf<ListItemDetails>()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_task1)
+        binding = ActivityTask1Binding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initializeComponents(savedInstanceState)
 
@@ -40,36 +32,36 @@ class Task1Activity : AppCompatActivity() {
     override fun onSaveInstanceState(outState: Bundle) {
         super.onSaveInstanceState(outState)
 
-        outState.apply {
-            putParcelableArrayList(BundleKeysEnum.Task1.LIST_ELEMENTS.name, ArrayList(listViewItems))
-            putInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name, listView.visibility)
-            putString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name, textView.text.toString())
-            putString(BundleKeysEnum.Task1.EDITTEXT_TEXT.name, editText.text.toString())
-            putBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name, switcher.isChecked)
+        binding.apply {
+            outState.apply {
+                putParcelableArrayList(BundleKeysEnum.Task1.LIST_ELEMENTS.name, ArrayList(listViewItems))
+                putInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name, listView.visibility)
+                putString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name, textView.text.toString())
+                putString(BundleKeysEnum.Task1.EDITTEXT_TEXT.name, editText.text.toString())
+                putBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name, switcher.isChecked)
+            }
         }
     }
 
     private fun initializeComponents(state: Bundle?) {
         if (state != null) with(state) {
-            listViewItems = getParcelableArrayList<ListItemDetails>(BundleKeysEnum.Task1.LIST_ELEMENTS.name)?.toList() ?: emptyList()
-            listView.visibility = getInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name)
-            textView.text = getString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name)
-            editText.setText(getString(BundleKeysEnum.Task1.EDITTEXT_TEXT.name))
-            switcher.isChecked = getBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name)
+            binding.apply {
+                listViewItems = getParcelableArrayList<ListItemDetails>(BundleKeysEnum.Task1.LIST_ELEMENTS.name)?.toList() ?: emptyList()
+                listView.visibility = getInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name)
+                textView.text = getString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name)
+                editText.setText(getString(BundleKeysEnum.Task1.EDITTEXT_TEXT.name))
+                switcher.isChecked = getBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name)
+            }
         } else {
-            fetchData()
+            listViewItems = InMemoryDataSource().fetchData(10)
         }
 
-        setSwitcherColor(switcher.isChecked)
+        setTextViewColor(binding.switcher.isChecked)
         populateListView()
     }
 
-    private fun fetchData() {
-        listViewItems = InMemoryDataSource().fetchData(10)
-    }
-
-    private fun setListeners() {
-        switcher.setOnCheckedChangeListener { _, isChecked -> setSwitcherColor(isChecked) }
+    private fun setListeners() = binding.apply {
+        switcher.setOnCheckedChangeListener { _, isChecked -> setTextViewColor(isChecked) }
 
         buttonHideList.setOnClickListener {
             listView.visibility = when(listView.visibility) {
@@ -82,36 +74,33 @@ class Task1Activity : AppCompatActivity() {
         }
 
         buttonToast.setOnClickListener {
-            Toast.makeText(this, R.string.toast_text, Toast.LENGTH_SHORT).show()
+            Toast.makeText(baseContext, R.string.toast_text, Toast.LENGTH_SHORT).show()
             Log.d(logTag, "Toast button was clicked")
         }
 
-        fab.setOnClickListener {
+        floatingActionButton.setOnClickListener {
             textView.text = editText.text
-            Snackbar.make(it, "EditText was changed", Snackbar.LENGTH_SHORT)
-                .show()
+            Snackbar.make(it, "EditText was changed", Snackbar.LENGTH_SHORT).show()
         }
 
         listView.setOnItemClickListener { _, _, i, _ ->
-            val intent = Intent(this, DetailsActivity::class.java)
-            val details = listViewItems[i]
-            intent.putExtra(IntentKeysEnum.Task1.DETAILS.name, details)
+            val intent = Intent(baseContext, DetailsActivity::class.java).apply {
+                putExtra(IntentKeysEnum.Task1.DETAILS.name, listViewItems[i])
+            }
 
             startActivity(intent)
         }
     }
 
-    private fun populateListView() {
-        val values = listViewItems.map { it.title }
-        val adapter = ArrayAdapter(this, R.layout.support_simple_spinner_dropdown_item, values)
-        listView.adapter = adapter
+    private fun populateListView() = binding.listView.apply {
+        adapter = ArrayAdapter(
+            baseContext,
+            R.layout.support_simple_spinner_dropdown_item,
+            listViewItems.map { it.title })
     }
 
-    private fun setSwitcherColor(isChecked: Boolean) {
-        val colorResource =
-            if (isChecked) R.color.green
-            else R.color.red
-
-        textView.setBackgroundResource(colorResource)
+    private fun setTextViewColor(isSwitcherChecked: Boolean) = binding.textView.apply {
+        setBackgroundResource(
+            if (isSwitcherChecked) R.color.green else R.color.red)
     }
 }

@@ -45,7 +45,7 @@
         </FrameLayout>
 
         <ListView
-            android:id="@+id/listview"
+            android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_weight="0.4"
@@ -93,7 +93,7 @@
             android:orientation="horizontal">
 
             <androidx.appcompat.widget.SwitchCompat
-                android:id="@+id/switch1"
+                android:id="@+id/switcher"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content" />
 
@@ -102,7 +102,7 @@
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:labelFor="@id/switch1"
+                android:labelFor="@id/switcher"
                 android:text="@string/label_switch_text"
                 android:textSize="@dimen/textSize_small" />
         </LinearLayout>
