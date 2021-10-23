@@ -7,15 +7,12 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
-import android.widget.ImageButton
-import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
-import androidx.drawerlayout.widget.DrawerLayout
-import com.google.android.material.navigation.NavigationView
+import com.itmo.basiclayout.databinding.ActivityButtonsBinding
 
 class ButtonsActivity : AppCompatActivity() {
 
@@ -23,24 +20,25 @@ class ButtonsActivity : AppCompatActivity() {
         private const val logTag = "BUTTONS"
     }
 
-    private lateinit var button_decrease: ImageButton
-    private lateinit var button_increase: ImageButton
-    private lateinit var textView_points: TextView
+    /* How to configure view binding
+    https://dev.to/henryudorji/using-view-binding-to-replace-findviewbyid-on-android-b5n
+    https://medium.com/androiddevelopers/use-view-binding-to-replace-findviewbyid-c83942471fc
+    https://developer.android.com/topic/libraries/view-binding#kts
+     */
+    private lateinit var binding: ActivityButtonsBinding
 
-    private lateinit var drawerLayout: DrawerLayout
-    private lateinit var navigationView: NavigationView
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
-    private var coursePoints: Int = 0
     private lateinit var preferences: SharedPreferences
+    private var coursePoints: Int = 0
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_buttons)
+        binding = ActivityButtonsBinding.inflate(layoutInflater)
+        setContentView(binding.root)
 
         initializePreferences()
 
-        findComponents()
         setListeners()
         initializeComponents()
 
@@ -60,28 +58,22 @@ class ButtonsActivity : AppCompatActivity() {
         coursePoints = preferences.getInt(PreferencesEnum.Buttons.COURSE_POINTS.name, 0)
     }
 
-    private fun findComponents() {
-        button_decrease = findViewById(R.id.button_coursePoints_decrease)
-        button_increase = findViewById(R.id.button_coursePoints_increase)
-        textView_points = findViewById(R.id.textView_coursePoints)
-    }
-
     private fun initializeComponents() {
-        textView_points.text = coursePoints.toString()
+        binding.textViewCoursePoints.text = coursePoints.toString()
     }
 
     private fun setListeners() {
-        button_decrease.setOnClickListener {
+        binding.buttonCoursePointsDecrease.setOnClickListener {
             if (coursePoints > 0)
-                textView_points.text = (--coursePoints).toString()
+                binding.textViewCoursePoints.text = (--coursePoints).toString()
         }
 
-        button_increase.setOnClickListener {
+        binding.buttonCoursePointsIncrease.setOnClickListener {
             if (coursePoints < 999)
-                textView_points.text = (++coursePoints).toString()
+                binding.textViewCoursePoints.text = (++coursePoints).toString()
         }
 
-        textView_points.doOnTextChanged { _, _, _, _ ->
+        binding.textViewCoursePoints.doOnTextChanged { _, _, _, _ ->
             val color = when {
                 coursePoints < 50 -> R.color.red
                 coursePoints < 60 -> R.color.orange
@@ -90,8 +82,8 @@ class ButtonsActivity : AppCompatActivity() {
             }
 
             val newTextViewColor = ResourcesCompat.getColor(resources, color, null)
-            if (newTextViewColor != textView_points.currentTextColor)
-                textView_points.setTextColor(newTextViewColor)
+            if (newTextViewColor != binding.textViewCoursePoints.currentTextColor)
+                binding.textViewCoursePoints.setTextColor(newTextViewColor)
         }
     }
 
@@ -103,17 +95,13 @@ class ButtonsActivity : AppCompatActivity() {
     http://developer.alexanderklimov.ru/android/navigation_drawer_activity.php
      */
     private fun initializeDrawer() {
-        drawerLayout = findViewById(R.id.drawerLayout)
-        navigationView = findViewById(R.id.navigationView)
-
-
-        drawerToggle = ActionBarDrawerToggle(this, drawerLayout, R.string.drawer_open, R.string.drawer_close)
-        drawerLayout.addDrawerListener(drawerToggle)
+        drawerToggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.drawer_open, R.string.drawer_close)
+        binding.drawerLayout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
 
         supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
-        navigationView.setNavigationItemSelectedListener {
+        binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
                 R.id.button_task1 -> openTask1Activity()
                 R.id.button_task2 -> openTask2Activity()
@@ -124,7 +112,7 @@ class ButtonsActivity : AppCompatActivity() {
                 }
             }
 
-            drawerLayout.closeDrawers()
+            binding.drawerLayout.closeDrawers()
             true
         }
     }
