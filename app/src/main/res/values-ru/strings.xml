@@ -11,7 +11,6 @@
     <string name="button_task2_text">Задание 2</string>
     <string name="button_task3_text">Задание 3</string>
     <string name="textView_coursePoints_label">Баллы за курс</string>
-    <string name="details_imageLabel">Название картинки</string>
     <string name="details_buttonNat">Натуральные</string>
     <string name="details_buttonFib">Фибоначчи</string>
     <string name="details_buttonCol">Коллатц</string>

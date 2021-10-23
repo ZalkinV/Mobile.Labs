@@ -16,7 +16,7 @@
     <string name="button_task3_text">Task 3</string>
     <string name="textView_coursePoints_label">Course points</string>
 
-    <string name="details_imageLabel">Image label</string>
+    <string name="details_imageLabel" translatable="false">Image label</string>
     <string name="details_textViewDescription" translatable="false">Some description</string>
     <string name="details_defaultNumber" translatable="false">0</string>
     <string name="details_buttonNat">Natural</string>

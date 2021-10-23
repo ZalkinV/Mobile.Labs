@@ -8,6 +8,6 @@
         android:layout_height="50dp"
         android:layout_marginStart="@dimen/margin_standard"
         android:layout_marginTop="@dimen/margin_standard"
-        android:text="Tasks" />
+        android:text="@string/drawer_header_text" />
 
 </LinearLayout>
