@@ -55,7 +55,7 @@ class ButtonsActivity : AppCompatActivity() {
     }
 
     private fun initializePreferences() {
-        preferences = getSharedPreferences(PreferencesEnum.Buttons.PREF_NAME.name, Context.MODE_PRIVATE)
+        preferences = getSharedPreferences(PreferencesEnum.Buttons::class.simpleName, Context.MODE_PRIVATE)
         coursePoints = preferences.getInt(PreferencesEnum.Buttons.COURSE_POINTS.name, 0)
     }
 
