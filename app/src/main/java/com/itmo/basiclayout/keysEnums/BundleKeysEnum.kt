@@ -6,7 +6,6 @@ enum class BundleKeysEnum {
         LIST_ELEMENTS,
         LIST_VISIBILITY,
         TEXTVIEW_TEXT,
-        EDITTEXT_TEXT,
         SWITCHER_STATE,
         ;
         enum class Details {

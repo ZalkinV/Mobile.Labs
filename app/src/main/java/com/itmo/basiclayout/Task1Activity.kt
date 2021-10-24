@@ -40,7 +40,6 @@ class Task1Activity : AppCompatActivity() {
                 putParcelableArrayList(BundleKeysEnum.Task1.LIST_ELEMENTS.name, ArrayList(listViewItems))
                 putInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name, listView.visibility)
                 putString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name, textView.text.toString())
-                putString(BundleKeysEnum.Task1.EDITTEXT_TEXT.name, editText.text.toString())
                 putBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name, switcher.isChecked)
             }
         }
@@ -52,7 +51,6 @@ class Task1Activity : AppCompatActivity() {
                 listViewItems = getParcelableArrayList<ListItemDetails>(BundleKeysEnum.Task1.LIST_ELEMENTS.name)?.toList() ?: emptyList()
                 listView.visibility = getInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name)
                 textView.text = getString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name)
-                editText.setText(getString(BundleKeysEnum.Task1.EDITTEXT_TEXT.name))
                 switcher.isChecked = getBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name)
             }
         } else {
