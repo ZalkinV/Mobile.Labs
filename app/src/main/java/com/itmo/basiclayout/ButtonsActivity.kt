@@ -65,20 +65,20 @@ class ButtonsActivity : AppCompatActivity() {
 
     private fun setListeners() = binding.apply {
         buttonCoursePointsDecrease.setOnClickListener {
-            if (coursePoints > 0)
+            if (coursePoints > Consts.MIN_COURSE_POINTS)
                 textViewCoursePoints.text = (--coursePoints).toString()
         }
 
         buttonCoursePointsIncrease.setOnClickListener {
-            if (coursePoints < 999)
+            if (coursePoints < Consts.MAX_COURSE_POINTS)
                 textViewCoursePoints.text = (++coursePoints).toString()
         }
 
         textViewCoursePoints.doOnTextChanged { _, _, _, _ ->
             val color = when {
-                coursePoints < 50 -> R.color.red
-                coursePoints < 60 -> R.color.orange
-                coursePoints < 80 -> R.color.yellow
+                coursePoints < Consts.MIN_COURSE_POINTS_MARK_C -> R.color.red
+                coursePoints < Consts.MIN_COURSE_POINTS_MARK_B -> R.color.orange
+                coursePoints < Consts.MIN_COURSE_POINTS_MARK_A -> R.color.yellow
                 else -> R.color.green
             }
 
