@@ -1,4 +1,4 @@
-package com.itmo.basiclayout.sequences
+package com.itmo.basiclayout.task1.sequences
 
 class FibonacciSequence(
     prevValue: Long,

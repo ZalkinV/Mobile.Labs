@@ -1,4 +1,4 @@
-package com.itmo.basiclayout
+package com.itmo.basiclayout.buttons
 
 object Consts {
     const val MIN_COURSE_POINTS = 0

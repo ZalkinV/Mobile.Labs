@@ -1,7 +1,7 @@
-package com.itmo.basiclayout.dataSources
+package com.itmo.basiclayout.task1.dataSources
 
-import com.itmo.basiclayout.ListItemDetails
-import com.itmo.basiclayout.keysEnums.IconEnum
+import com.itmo.basiclayout.task1.ListItemDetails
+import com.itmo.basiclayout.task1.keysEnums.IconEnum
 import kotlin.random.Random
 
 class InMemoryDataSource: DataSource {

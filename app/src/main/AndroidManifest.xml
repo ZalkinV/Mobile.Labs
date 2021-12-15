@@ -10,10 +10,10 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicLayout">
         <activity
-            android:name=".DetailsActivity"
+            android:name=".task1.DetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".ButtonsActivity"
+            android:name="com.itmo.basiclayout.buttons.ButtonsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -22,7 +22,7 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".Task1Activity"
+            android:name=".task1.Task1Activity"
             android:exported="true" />
     </application>
 

@@ -1,8 +1,8 @@
-package com.itmo.basiclayout
+package com.itmo.basiclayout.task1
 
 import android.os.Parcel
 import android.os.Parcelable
-import com.itmo.basiclayout.keysEnums.IconEnum
+import com.itmo.basiclayout.task1.keysEnums.IconEnum
 
 data class ListItemDetails(
     val title: String,

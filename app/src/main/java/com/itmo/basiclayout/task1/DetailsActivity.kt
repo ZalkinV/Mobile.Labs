@@ -1,14 +1,15 @@
-package com.itmo.basiclayout
+package com.itmo.basiclayout.task1
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.itmo.basiclayout.R
 import com.itmo.basiclayout.databinding.ActivityDetailsBinding
-import com.itmo.basiclayout.keysEnums.BundleKeysEnum
-import com.itmo.basiclayout.keysEnums.IconEnum
-import com.itmo.basiclayout.keysEnums.IntentKeysEnum
-import com.itmo.basiclayout.sequences.CollatzSequence
-import com.itmo.basiclayout.sequences.FibonacciSequence
-import com.itmo.basiclayout.sequences.NaturalSequence
+import com.itmo.basiclayout.task1.keysEnums.BundleKeysEnum
+import com.itmo.basiclayout.task1.keysEnums.IconEnum
+import com.itmo.basiclayout.task1.keysEnums.IntentKeysEnum
+import com.itmo.basiclayout.task1.sequences.CollatzSequence
+import com.itmo.basiclayout.task1.sequences.FibonacciSequence
+import com.itmo.basiclayout.task1.sequences.NaturalSequence
 
 class DetailsActivity : AppCompatActivity() {
 

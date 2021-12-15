@@ -1,4 +1,4 @@
-package com.itmo.basiclayout.keysEnums
+package com.itmo.basiclayout.task1.keysEnums
 
 enum class PreferencesEnum {
     ;

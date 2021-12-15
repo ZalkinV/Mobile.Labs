@@ -1,4 +1,4 @@
-package com.itmo.basiclayout
+package com.itmo.basiclayout.buttons
 
 import android.content.Context
 import android.content.Intent
@@ -12,8 +12,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
+import com.itmo.basiclayout.task1.DetailsActivity
+import com.itmo.basiclayout.R
+import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
-import com.itmo.basiclayout.keysEnums.PreferencesEnum
+import com.itmo.basiclayout.task1.keysEnums.PreferencesEnum
 
 class ButtonsActivity : AppCompatActivity() {
 
@@ -96,7 +99,10 @@ class ButtonsActivity : AppCompatActivity() {
     http://developer.alexanderklimov.ru/android/navigation_drawer_activity.php
      */
     private fun initializeDrawer() {
-        drawerToggle = ActionBarDrawerToggle(this, binding.drawerLayout, R.string.drawer_open, R.string.drawer_close)
+        drawerToggle = ActionBarDrawerToggle(this, binding.drawerLayout,
+            R.string.drawer_open,
+            R.string.drawer_close
+        )
         binding.drawerLayout.addDrawerListener(drawerToggle)
         drawerToggle.syncState()
 

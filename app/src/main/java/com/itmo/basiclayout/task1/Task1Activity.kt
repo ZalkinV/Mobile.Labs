@@ -1,4 +1,4 @@
-package com.itmo.basiclayout
+package com.itmo.basiclayout.task1
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
@@ -7,10 +7,11 @@ import android.util.Log
 import android.view.View
 import android.widget.*
 import com.google.android.material.snackbar.Snackbar
-import com.itmo.basiclayout.dataSources.InMemoryDataSource
+import com.itmo.basiclayout.R
+import com.itmo.basiclayout.task1.dataSources.InMemoryDataSource
 import com.itmo.basiclayout.databinding.ActivityTask1Binding
-import com.itmo.basiclayout.keysEnums.BundleKeysEnum
-import com.itmo.basiclayout.keysEnums.IntentKeysEnum
+import com.itmo.basiclayout.task1.keysEnums.BundleKeysEnum
+import com.itmo.basiclayout.task1.keysEnums.IntentKeysEnum
 
 class Task1Activity : AppCompatActivity() {
 
@@ -102,6 +103,7 @@ class Task1Activity : AppCompatActivity() {
 
     private fun setTextViewColor(isSwitcherChecked: Boolean) = binding.textView.apply {
         setBackgroundResource(
-            if (isSwitcherChecked) R.color.green else R.color.red)
+            if (isSwitcherChecked) R.color.green else R.color.red
+        )
     }
 }
