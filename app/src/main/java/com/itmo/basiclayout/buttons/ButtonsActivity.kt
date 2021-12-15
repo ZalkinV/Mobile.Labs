@@ -16,7 +16,6 @@ import com.itmo.basiclayout.task1.DetailsActivity
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
-import com.itmo.basiclayout.task1.keysEnums.PreferencesEnum
 
 class ButtonsActivity : AppCompatActivity() {
 
@@ -53,13 +52,13 @@ class ButtonsActivity : AppCompatActivity() {
         super.onStop()
 
         preferences.edit(commit = true) {
-            putInt(PreferencesEnum.Buttons.COURSE_POINTS.name, coursePoints)
+            putInt(PreferenceConsts.COURSE_POINTS, coursePoints)
         }
     }
 
     private fun initializePreferences() {
-        preferences = getSharedPreferences(PreferencesEnum.Buttons::class.simpleName, Context.MODE_PRIVATE)
-        coursePoints = preferences.getInt(PreferencesEnum.Buttons.COURSE_POINTS.name, 0)
+        preferences = getSharedPreferences(PreferenceConsts.FILE_NAME, Context.MODE_PRIVATE)
+        coursePoints = preferences.getInt(PreferenceConsts.COURSE_POINTS, 0)
     }
 
     private fun initializeComponents() = binding.apply {
