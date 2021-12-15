@@ -33,12 +33,12 @@ class DetailsActivity : AppCompatActivity() {
     private fun initializeSequences(state: Bundle?) {
         state?.let {
             sequenceNat = NaturalSequence(
-                it.getLong(BundleKeysEnum.Task1.Details.NUM_NAT.name))
+                it.getLong(BundleKeysEnum.Details.NUM_NAT.name))
             sequenceFib = FibonacciSequence(
-                it.getLong(BundleKeysEnum.Task1.Details.NUM_FIB_PREV.name),
-                it.getLong(BundleKeysEnum.Task1.Details.NUM_FIB.name))
+                it.getLong(BundleKeysEnum.Details.NUM_FIB_PREV.name),
+                it.getLong(BundleKeysEnum.Details.NUM_FIB.name))
             sequenceCol = CollatzSequence(
-                it.getLong(BundleKeysEnum.Task1.Details.NUM_COL.name))
+                it.getLong(BundleKeysEnum.Details.NUM_COL.name))
         }
     }
 
@@ -46,10 +46,10 @@ class DetailsActivity : AppCompatActivity() {
         super.onSaveInstanceState(outState)
 
         outState.apply {
-            putLong(BundleKeysEnum.Task1.Details.NUM_NAT.name, sequenceNat.value)
-            putLong(BundleKeysEnum.Task1.Details.NUM_FIB_PREV.name, sequenceFib.prevValue)
-            putLong(BundleKeysEnum.Task1.Details.NUM_FIB.name, sequenceFib.value)
-            putLong(BundleKeysEnum.Task1.Details.NUM_COL.name, sequenceCol.value)
+            putLong(BundleKeysEnum.Details.NUM_NAT.name, sequenceNat.value)
+            putLong(BundleKeysEnum.Details.NUM_FIB_PREV.name, sequenceFib.prevValue)
+            putLong(BundleKeysEnum.Details.NUM_FIB.name, sequenceFib.value)
+            putLong(BundleKeysEnum.Details.NUM_COL.name, sequenceCol.value)
         }
     }
 

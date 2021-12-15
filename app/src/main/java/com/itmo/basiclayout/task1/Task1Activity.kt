@@ -38,10 +38,10 @@ class Task1Activity : AppCompatActivity() {
 
         binding.apply {
             outState.apply {
-                putParcelableArrayList(BundleKeysEnum.Task1.LIST_ELEMENTS.name, ArrayList(listViewItems))
-                putInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name, listView.visibility)
-                putString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name, textView.text.toString())
-                putBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name, switcher.isChecked)
+                putParcelableArrayList(BundleKeysEnum.LIST_ELEMENTS.name, ArrayList(listViewItems))
+                putInt(BundleKeysEnum.LIST_VISIBILITY.name, listView.visibility)
+                putString(BundleKeysEnum.TEXTVIEW_TEXT.name, textView.text.toString())
+                putBoolean(BundleKeysEnum.SWITCHER_STATE.name, switcher.isChecked)
             }
         }
     }
@@ -49,10 +49,10 @@ class Task1Activity : AppCompatActivity() {
     private fun initializeComponents(state: Bundle?) {
         if (state != null) with(state) {
             binding.apply {
-                listViewItems = getParcelableArrayList<ListItemDetails>(BundleKeysEnum.Task1.LIST_ELEMENTS.name)?.toList() ?: emptyList()
-                listView.visibility = getInt(BundleKeysEnum.Task1.LIST_VISIBILITY.name)
-                textView.text = getString(BundleKeysEnum.Task1.TEXTVIEW_TEXT.name)
-                switcher.isChecked = getBoolean(BundleKeysEnum.Task1.SWITCHER_STATE.name)
+                listViewItems = getParcelableArrayList<ListItemDetails>(BundleKeysEnum.LIST_ELEMENTS.name)?.toList() ?: emptyList()
+                listView.visibility = getInt(BundleKeysEnum.LIST_VISIBILITY.name)
+                textView.text = getString(BundleKeysEnum.TEXTVIEW_TEXT.name)
+                switcher.isChecked = getBoolean(BundleKeysEnum.SWITCHER_STATE.name)
             }
         } else {
             listViewItems = InMemoryDataSource().fetchData(10)
