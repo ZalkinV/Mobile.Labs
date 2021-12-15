@@ -87,7 +87,7 @@ class Task1Activity : AppCompatActivity() {
 
         listView.setOnItemClickListener { _, _, i, _ ->
             val intent = Intent(baseContext, DetailsActivity::class.java).apply {
-                putExtra(IntentKeysEnum.Task1.DETAILS.name, listViewItems[i])
+                putExtra(IntentKeysEnum.DETAILS.name, listViewItems[i])
             }
 
             startActivity(intent)

@@ -58,7 +58,7 @@ class DetailsActivity : AppCompatActivity() {
         textFib.text = sequenceFib.prevValue.toString()
         textCol.text = sequenceCol.value.toString()
 
-        val listItemDetails = intent.getParcelableExtra<ListItemDetails>(IntentKeysEnum.Task1.DETAILS.name)
+        val listItemDetails = intent.getParcelableExtra<ListItemDetails>(IntentKeysEnum.DETAILS.name)
         listItemDetails?.let {
             textImageLabel.text = it.title
             textDescription.text = it.description
