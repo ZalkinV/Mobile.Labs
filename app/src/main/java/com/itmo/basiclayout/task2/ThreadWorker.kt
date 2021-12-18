@@ -11,6 +11,7 @@ class ThreadWorker(var workPeriodMs: Long, private val doWork: (iteration: Int) 
 
     fun start() {
         if (isWorking) return
+
         isWorking = true
 
         thread = thread {
@@ -20,5 +21,15 @@ class ThreadWorker(var workPeriodMs: Long, private val doWork: (iteration: Int) 
                 Thread.sleep(workPeriodMs)
             }
         }
+    }
+
+    fun stop() {
+        isWorking = false
+    }
+
+    fun reset() {
+        iteration = 0
+        doWork(iteration)
+        stop()
     }
 }

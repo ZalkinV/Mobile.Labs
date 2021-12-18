@@ -24,6 +24,8 @@ class Task2Activity : AppCompatActivity() {
 
     private fun initializeListeners() = with(binding) {
         t2BtnRun.setOnClickListener { startWorkers() }
+        t2BtnStop.setOnClickListener { stopWorkers() }
+        t2BtnReset.setOnClickListener { resetWorkers() }
     }
 
     private fun initializeWorkers() {
@@ -38,6 +40,16 @@ class Task2Activity : AppCompatActivity() {
     private fun startWorkers() {
         threadWorker1.start()
         threadWorker2.start()
+    }
+
+    private fun stopWorkers() {
+        threadWorker1.stop()
+        threadWorker2.stop()
+    }
+
+    private fun resetWorkers() {
+        threadWorker1.reset()
+        threadWorker2.reset()
     }
 
     private fun setNumber(textView: TextView, number: Int) {
