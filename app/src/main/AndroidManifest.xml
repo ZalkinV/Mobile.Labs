@@ -10,10 +10,13 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicLayout">
         <activity
+            android:name=".task2.Task2Activity"
+            android:exported="false" />
+        <activity
             android:name=".task1.DetailsActivity"
             android:exported="true" />
         <activity
-            android:name="com.itmo.basiclayout.buttons.ButtonsActivity"
+            android:name=".buttons.ButtonsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
