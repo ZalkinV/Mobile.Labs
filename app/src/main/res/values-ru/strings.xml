@@ -21,4 +21,8 @@
     <string name="task1_image_icon_description">Icon</string>
     <string name="drawer_header_text">Задания</string>
     <string name="task1_snackBar_text">Текс надписи был изменён</string>
+    <string name="t2_btn_run_text">Run</string>
+    <string name="t2_btn_stop_text">Stop</string>
+    <string name="t2_btn_reset_text">Reset</string>
+    <string name="t2_tv_text_default">TextView</string>
 </resources>

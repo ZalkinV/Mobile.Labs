@@ -3,4 +3,7 @@
     <style name="SequenceNumberText" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/textSize_big</item>
     </style>
+    <style name="ThreadCounterText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/textSize_big</item>
+    </style>
 </resources>

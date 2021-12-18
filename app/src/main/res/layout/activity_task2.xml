@@ -6,4 +6,65 @@
     android:layout_height="match_parent"
     tools:context=".task2.Task2Activity">
 
+    <Button
+        android:id="@+id/t2_btn_run"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:text="@string/t2_btn_run_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <Button
+        android:id="@+id/t2_btn_stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/t2_btn_stop_text"
+        app:layout_constraintEnd_toEndOf="@+id/t2_btn_run"
+        app:layout_constraintStart_toStartOf="@+id/t2_btn_run"
+        app:layout_constraintTop_toBottomOf="@+id/t2_btn_run" />
+
+    <Button
+        android:id="@+id/t2_btn_reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/t2_btn_reset_text"
+        app:layout_constraintEnd_toEndOf="@+id/t2_btn_stop"
+        app:layout_constraintStart_toStartOf="@+id/t2_btn_stop"
+        app:layout_constraintTop_toBottomOf="@+id/t2_btn_stop" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/t2_tv_first"
+        style="@style/ThreadCounterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:text="@string/t2_tv_text_default"
+        app:layout_constraintBottom_toTopOf="@+id/t2_tv_second"
+        app:layout_constraintEnd_toEndOf="@+id/t2_tv_second"
+        app:layout_constraintStart_toStartOf="@+id/t2_tv_second" />
+
+    <TextView
+        android:id="@+id/t2_tv_second"
+        style="@style/ThreadCounterText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="32dp"
+        android:text="@string/t2_tv_text_default"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
