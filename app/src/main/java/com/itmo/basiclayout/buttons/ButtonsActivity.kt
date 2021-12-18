@@ -16,6 +16,7 @@ import com.itmo.basiclayout.task1.DetailsActivity
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
+import com.itmo.basiclayout.task2.Task2Activity
 
 class ButtonsActivity : AppCompatActivity() {
 
@@ -140,7 +141,7 @@ class ButtonsActivity : AppCompatActivity() {
     private fun openTask2Activity() {
         Log.i(logTag, "Open Task2 activity")
 
-        val intent = Intent(this, DetailsActivity::class.java)
+        val intent = Intent(this, Task2Activity::class.java)
         startActivity(intent)
     }
 }
