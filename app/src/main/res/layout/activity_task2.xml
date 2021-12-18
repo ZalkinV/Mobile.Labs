@@ -42,7 +42,7 @@
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintGuide_percent="0.5"
+        app:layout_constraintGuide_percent="0.6"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
@@ -50,7 +50,7 @@
         style="@style/ThreadCounterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="8dp"
+        android:layout_marginBottom="96dp"
         android:text="@string/t2_tv_text_default"
         app:layout_constraintBottom_toTopOf="@+id/t2_tv_second"
         app:layout_constraintEnd_toEndOf="@+id/t2_tv_second"
@@ -61,10 +61,78 @@
         style="@style/ThreadCounterText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginBottom="80dp"
         android:text="@string/t2_tv_text_default"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
+
+    <ImageButton
+        android:id="@+id/t2_btn_first_speedup"
+        style="@style/ThreadSpeedButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/t2_tv_first_speed"
+        app:layout_constraintStart_toEndOf="@+id/t2_tv_first_speed"
+        app:layout_constraintTop_toTopOf="@+id/t2_tv_first_speed"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/t2_btn_first_slowdown"
+        style="@style/ThreadSpeedButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/t2_tv_first_speed"
+        app:layout_constraintEnd_toStartOf="@+id/t2_tv_first_speed"
+        app:layout_constraintTop_toTopOf="@+id/t2_tv_first_speed"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/t2_btn_second_speedup"
+        style="@style/ThreadSpeedButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/t2_tv_second_speed"
+        app:layout_constraintStart_toEndOf="@+id/t2_tv_second_speed"
+        app:layout_constraintTop_toTopOf="@+id/t2_tv_second_speed"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_right"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <ImageButton
+        android:id="@+id/t2_btn_second_slowdown"
+        style="@style/ThreadSpeedButtons"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintBottom_toBottomOf="@+id/t2_tv_second_speed"
+        app:layout_constraintEnd_toStartOf="@+id/t2_tv_second_speed"
+        app:layout_constraintTop_toTopOf="@+id/t2_tv_second_speed"
+        app:srcCompat="@drawable/ic_baseline_keyboard_arrow_left"
+        tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+
+    <TextView
+        android:id="@+id/t2_tv_first_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/t2_tv_speed_text_default"
+        app:layout_constraintEnd_toEndOf="@+id/t2_tv_first"
+        app:layout_constraintStart_toStartOf="@+id/t2_tv_first"
+        app:layout_constraintTop_toBottomOf="@+id/t2_tv_first" />
+
+    <TextView
+        android:id="@+id/t2_tv_second_speed"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/t2_tv_speed_text_default"
+        app:layout_constraintEnd_toEndOf="@+id/t2_tv_second"
+        app:layout_constraintStart_toStartOf="@+id/t2_tv_second"
+        app:layout_constraintTop_toBottomOf="@+id/t2_tv_second" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

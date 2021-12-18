@@ -6,4 +6,7 @@
     <style name="ThreadCounterText" parent="Widget.AppCompat.TextView">
         <item name="android:textSize">@dimen/textSize_big</item>
     </style>
+    <style name="ThreadSpeedButtons" parent="Widget.AppCompat.ImageButton">
+        <item name="android:background">?android:selectableItemBackground</item>
+    </style>
 </resources>
