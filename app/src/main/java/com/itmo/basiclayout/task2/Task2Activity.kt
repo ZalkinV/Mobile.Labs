@@ -4,7 +4,6 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
 import com.itmo.basiclayout.databinding.ActivityTask2Binding
-import com.itmo.basiclayout.task2.Consts
 
 class Task2Activity : AppCompatActivity() {
 
@@ -18,14 +17,37 @@ class Task2Activity : AppCompatActivity() {
         binding = ActivityTask2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        initializeListeners()
         initializeWorkers()
+        initializeComponents()
+        initializeListeners()
+    }
+
+    private fun initializeComponents() {
+        displayWorker1Speed()
+        displayWorker2Speed()
     }
 
     private fun initializeListeners() = with(binding) {
         t2BtnRun.setOnClickListener { startWorkers() }
         t2BtnStop.setOnClickListener { stopWorkers() }
         t2BtnReset.setOnClickListener { resetWorkers() }
+
+        t2BtnFirstSpeedup.setOnClickListener {
+            threadWorker1.increaseSpeed()
+            displayWorker1Speed()
+        }
+        t2BtnFirstSlowdown.setOnClickListener {
+            threadWorker1.decreaseSpeed()
+            displayWorker1Speed()
+        }
+        t2BtnSecondSpeedup.setOnClickListener {
+            threadWorker2.increaseSpeed()
+            displayWorker2Speed()
+        }
+        t2BtnSecondSlowdown.setOnClickListener {
+            threadWorker2.decreaseSpeed()
+            displayWorker2Speed()
+        }
     }
 
     private fun initializeWorkers() {
@@ -56,5 +78,13 @@ class Task2Activity : AppCompatActivity() {
         runOnUiThread {
             textView.text = number.toString()
         }
+    }
+
+    private fun displayWorker1Speed() {
+        binding.t2TvFirstSpeed.text = threadWorker1.workPeriodMs.toString()
+    }
+
+    private fun displayWorker2Speed() {
+        binding.t2TvSecondSpeed.text = threadWorker2.workPeriodMs.toString()
     }
 }

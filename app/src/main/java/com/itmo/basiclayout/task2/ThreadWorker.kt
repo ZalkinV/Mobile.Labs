@@ -32,4 +32,16 @@ class ThreadWorker(var workPeriodMs: Long, private val doWork: (iteration: Int) 
         doWork(iteration)
         stop()
     }
+
+    fun increaseSpeed() {
+        workPeriodMs -= Consts.THREAD_DELAY_STEP_MS
+        if (workPeriodMs < Consts.THREAD_DELAY_MIN_MS)
+            workPeriodMs = Consts.THREAD_DELAY_MIN_MS
+    }
+
+    fun decreaseSpeed() {
+        workPeriodMs += Consts.THREAD_DELAY_STEP_MS
+        if (workPeriodMs > Consts.THREAD_DELAY_MAX_MS)
+            workPeriodMs = Consts.THREAD_DELAY_MAX_MS
+    }
 }
