@@ -3,43 +3,42 @@ package com.itmo.basiclayout.task2
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.TextView
-import com.itmo.basiclayout.R
 import com.itmo.basiclayout.databinding.ActivityTask2Binding
-import kotlin.concurrent.thread
+import com.itmo.basiclayout.task2.Consts
 
 class Task2Activity : AppCompatActivity() {
 
     private lateinit var binding: ActivityTask2Binding
+
+    private lateinit var threadWorker1 : ThreadWorker
+    private lateinit var threadWorker2 : ThreadWorker
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityTask2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
-        startThreads()
+        initializeWorkers()
+        startWorkers()
     }
 
-    private fun startThreads() {
-        val thread1 = thread {
-            while (true) {
-                increaseNumbers(binding.t2TvFirst)
-                Thread.sleep(600)
-            }
+    private fun initializeWorkers() {
+        threadWorker1 = ThreadWorker(Consts.FIRST_THREAD_BASE_PERIOD_MS) { iteration ->
+            setNumber(binding.t2TvFirst, iteration)
         }
-
-        val thread2 = thread {
-            while (true) {
-                increaseNumbers(binding.t2TvSecond)
-                Thread.sleep(400)
-            }
+        threadWorker2 = ThreadWorker(Consts.SECOND_THREAD_BASE_PERIOD_MS) { iteration ->
+            setNumber(binding.t2TvSecond, iteration)
         }
     }
 
-    private fun increaseNumbers(textView: TextView) {
-        val newValue = (Integer.parseInt(textView.text.toString()) + 1).toString()
+    private fun startWorkers() {
+        threadWorker1.start()
+        threadWorker2.start()
+    }
 
+    private fun setNumber(textView: TextView, number: Int) {
         runOnUiThread {
-            textView.text = newValue
+            textView.text = number.toString()
         }
     }
 }
