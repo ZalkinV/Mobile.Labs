@@ -18,8 +18,12 @@ class Task2Activity : AppCompatActivity() {
         binding = ActivityTask2Binding.inflate(layoutInflater)
         setContentView(binding.root)
 
+        initializeListeners()
         initializeWorkers()
-        startWorkers()
+    }
+
+    private fun initializeListeners() = with(binding) {
+        t2BtnRun.setOnClickListener { startWorkers() }
     }
 
     private fun initializeWorkers() {
