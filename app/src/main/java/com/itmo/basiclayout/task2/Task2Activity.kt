@@ -22,6 +22,11 @@ class Task2Activity : AppCompatActivity() {
         initializeListeners()
     }
 
+    override fun onStop() {
+        super.onStop()
+        stopWorkers()
+    }
+
     private fun initializeComponents() {
         displayWorker1Speed()
         displayWorker2Speed()
