@@ -1,21 +1,25 @@
 package com.itmo.basiclayout.task2
 
+import java.util.concurrent.atomic.AtomicBoolean
 import kotlin.concurrent.thread
 
-class ThreadWorker(var workPeriodMs: Long, private val doWork: (iteration: Int) -> Unit) {
+class ThreadWorker(
+    @Volatile var workPeriodMs: Long,
+    private val doWork: (iteration: Int) -> Unit
+) {
 
-    var isWorking: Boolean = false
+    var isWorking: AtomicBoolean = AtomicBoolean(false)
     var iteration: Int = 0
 
     private var thread : Thread? = null
 
     fun start() {
-        if (isWorking) return
+        if (isWorking.get()) return
 
-        isWorking = true
+        isWorking.set(true)
 
         thread = thread {
-            while (isWorking) {
+            while (isWorking.get()) {
                 doWork(iteration)
                 iteration++
                 Thread.sleep(workPeriodMs)
@@ -24,7 +28,7 @@ class ThreadWorker(var workPeriodMs: Long, private val doWork: (iteration: Int) 
     }
 
     fun stop() {
-        isWorking = false
+        isWorking.set(false)
     }
 
     fun reset() {
