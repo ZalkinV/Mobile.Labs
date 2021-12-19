@@ -2,6 +2,7 @@ package com.itmo.basiclayout.task3.company.gateway
 
 import com.google.gson.GsonBuilder
 import com.itmo.basiclayout.task3.company.Consts
+import com.itmo.basiclayout.task3.company.domain.CompanyEntity
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -17,7 +18,7 @@ class CompanyGatewayImpl : CompanyGateway{
     private val gson = GsonBuilder()
         .create()
 
-    override fun get(id: Int): CompanyApiModel {
+    override fun get(id: Int): CompanyEntity {
 
         val requestUrl = Consts.COMPANY_GATEWAY_BASE_URL.toHttpUrl().newBuilder()
             .addPathSegment(PATH_SEGMENT)
@@ -39,6 +40,6 @@ class CompanyGatewayImpl : CompanyGateway{
             gson.fromJson(responseBody, CompanyApiModel::class.java)
         }
 
-        return company
+        return company.toEntity()
     }
 }
