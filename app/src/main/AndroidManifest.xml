@@ -10,6 +10,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.BasicLayout">
         <activity
+            android:name=".task3.company.ui.Task3Activity"
+            android:exported="false" />
+        <activity
             android:name=".task2.Task2Activity"
             android:exported="false" />
         <activity

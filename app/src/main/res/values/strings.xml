@@ -35,4 +35,7 @@
     <string name="t2_btn_reset_text">Reset</string>
     <string name="t2_tv_text_default">0</string>
     <string name="t2_tv_speed_text_default">Speed</string>
+
+    <string name="t3_btn_load_text">Load</string>
+    <string name="t3_tv_text_default">No data</string>
 </resources>

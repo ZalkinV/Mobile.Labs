@@ -9,4 +9,7 @@
     <style name="ThreadSpeedButtons" parent="Widget.AppCompat.ImageButton">
         <item name="android:background">?android:selectableItemBackground</item>
     </style>
+    <style name="CompanyNameText" parent="Widget.AppCompat.TextView">
+        <item name="android:textSize">@dimen/textSize_standard</item>
+    </style>
 </resources>

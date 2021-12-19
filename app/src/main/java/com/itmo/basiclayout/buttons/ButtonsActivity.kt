@@ -12,11 +12,11 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
-import com.itmo.basiclayout.task1.DetailsActivity
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
 import com.itmo.basiclayout.task2.Task2Activity
+import com.itmo.basiclayout.task3.company.ui.Task3Activity
 
 class ButtonsActivity : AppCompatActivity() {
 
@@ -112,6 +112,7 @@ class ButtonsActivity : AppCompatActivity() {
             when (it.itemId) {
                 R.id.button_task1 -> openTask1Activity()
                 R.id.button_task2 -> openTask2Activity()
+                R.id.button_task3 -> openTask3Activity()
                 else ->
                 {
                     Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
@@ -142,6 +143,13 @@ class ButtonsActivity : AppCompatActivity() {
         Log.i(logTag, "Open Task2 activity")
 
         val intent = Intent(this, Task2Activity::class.java)
+        startActivity(intent)
+    }
+
+    private fun openTask3Activity() {
+        Log.i(logTag, "Open Task3 activity")
+
+        val intent = Intent(this, Task3Activity::class.java)
         startActivity(intent)
     }
 }
