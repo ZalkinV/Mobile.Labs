@@ -7,6 +7,6 @@ class CompanyInteractorImpl(
     private val companyGateway: CompanyGateway = CompanyGatewayImpl(),
 ) : CompanyInteractor {
 
-    override fun get(id: Int) = companyGateway.get(id)
+    override suspend fun get(id: Int) = companyGateway.get(id)
 
 }

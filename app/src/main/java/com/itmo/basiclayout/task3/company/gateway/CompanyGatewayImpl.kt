@@ -3,6 +3,8 @@ package com.itmo.basiclayout.task3.company.gateway
 import com.google.gson.GsonBuilder
 import com.itmo.basiclayout.task3.company.Consts
 import com.itmo.basiclayout.task3.company.domain.CompanyEntity
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.withContext
 import okhttp3.HttpUrl.Companion.toHttpUrl
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -18,7 +20,9 @@ class CompanyGatewayImpl : CompanyGateway{
     private val gson = GsonBuilder()
         .create()
 
-    override fun get(id: Int): CompanyEntity {
+    // Suppress as it is wrong in withContext: https://stackoverflow.com/questions/58680028/how-to-make-inappropriate-blocking-method-call-appropriate
+    @Suppress("BlockingMethodInNonBlockingContext")
+    override suspend fun get(id: Int): CompanyEntity = withContext(Dispatchers.IO) {
 
         val requestUrl = Consts.COMPANY_GATEWAY_BASE_URL.toHttpUrl().newBuilder()
             .addPathSegment(PATH_SEGMENT)
@@ -40,6 +44,6 @@ class CompanyGatewayImpl : CompanyGateway{
             gson.fromJson(responseBody, CompanyApiModel::class.java)
         }
 
-        return company.toEntity()
+        company.toEntity()
     }
 }
