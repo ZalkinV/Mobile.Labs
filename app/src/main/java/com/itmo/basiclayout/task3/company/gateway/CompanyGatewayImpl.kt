@@ -6,8 +6,10 @@ import com.itmo.basiclayout.task3.company.domain.CompanyEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.HttpUrl.Companion.toHttpUrl
+import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
+import okhttp3.logging.HttpLoggingInterceptor
 import java.io.IOException
 
 class CompanyGatewayImpl : CompanyGateway{
@@ -16,7 +18,15 @@ class CompanyGatewayImpl : CompanyGateway{
         const val PATH_SEGMENT = "company"
     }
 
-    private val httpClient = OkHttpClient()
+    // OkHTtpLoggingInterceptor: https://github.com/square/okhttp/tree/master/okhttp-logging-interceptor
+    // https://square.github.io/okhttp/interceptors/
+    // https://howtodoinjava.com/retrofit2/logging-with-retrofit2/
+    private val interceptor = HttpLoggingInterceptor()
+        .setLevel(HttpLoggingInterceptor.Level.BASIC)
+    private val httpClient = OkHttpClient().newBuilder()
+        .addInterceptor(interceptor)
+        .build()
+
     private val gson = GsonBuilder()
         .create()
 
