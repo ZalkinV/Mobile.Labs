@@ -1,18 +1,16 @@
 package com.itmo.basiclayout.buttons
 
-import android.content.Context
 import android.content.Intent
-import android.content.SharedPreferences
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.itmo.basiclayout.R
+import com.itmo.basiclayout.buttons.model.ButtonsPreferenceProviderImpl
 import com.itmo.basiclayout.buttons.presenter.ButtonsPresenterImpl
 import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
@@ -34,16 +32,12 @@ class ButtonsActivity : AppCompatActivity() {
 
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
-    private lateinit var preferences: SharedPreferences
-
-    private val buttonsController = ButtonsPresenterImpl()
+    private val buttonsController = ButtonsPresenterImpl(ButtonsPreferenceProviderImpl(baseContext))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityButtonsBinding.inflate(layoutInflater)
         setContentView(binding.root)
-
-        initializePreferences()
 
         setListeners()
         initializeComponents()
@@ -53,15 +47,7 @@ class ButtonsActivity : AppCompatActivity() {
 
     override fun onStop() {
         super.onStop()
-
-        preferences.edit(commit = true) {
-            putInt(PreferenceConsts.COURSE_POINTS, buttonsController.coursePoints)
-        }
-    }
-
-    private fun initializePreferences() {
-        preferences = getSharedPreferences(PreferenceConsts.FILE_NAME, Context.MODE_PRIVATE)
-        buttonsController.coursePoints = preferences.getInt(PreferenceConsts.COURSE_POINTS, 0)
+        buttonsController.saveCoursePoints()
     }
 
     private fun initializeComponents() = binding.apply {

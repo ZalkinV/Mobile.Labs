@@ -2,10 +2,13 @@ package com.itmo.basiclayout.buttons.presenter
 
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.buttons.CoursePointsConsts
+import com.itmo.basiclayout.buttons.model.ButtonsPreferenceProviderImpl
 
-class ButtonsPresenterImpl : ButtonsPresenter {
+class ButtonsPresenterImpl(
+    private val preferenceProvider: ButtonsPreferenceProviderImpl
+) : ButtonsPresenter {
 
-    override var coursePoints: Int = 0
+    override var coursePoints: Int = getSavedCoursePoints()
         set(value) {
             field = when {
                 value < CoursePointsConsts.MIN -> CoursePointsConsts.MIN
@@ -32,4 +35,10 @@ class ButtonsPresenterImpl : ButtonsPresenter {
         coursePoints < CoursePointsConsts.MIN_MARK_A -> R.color.yellow
         else -> R.color.green
     }
+
+    private fun getSavedCoursePoints() =
+        preferenceProvider.getCoursePoints()
+
+    fun saveCoursePoints() =
+        preferenceProvider.saveCoursePoints(coursePoints)
 }
