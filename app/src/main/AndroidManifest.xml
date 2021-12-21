@@ -21,7 +21,7 @@
             android:name=".task1.DetailsActivity"
             android:exported="true" />
         <activity
-            android:name=".buttons.ButtonsActivity"
+            android:name=".buttons.view.ButtonsActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

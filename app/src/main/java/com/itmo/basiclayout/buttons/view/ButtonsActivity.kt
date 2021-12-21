@@ -1,4 +1,4 @@
-package com.itmo.basiclayout.buttons
+package com.itmo.basiclayout.buttons.view
 
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
