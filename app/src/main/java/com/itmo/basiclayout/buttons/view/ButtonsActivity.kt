@@ -11,6 +11,7 @@ import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.buttons.model.CoursePointsProviderImpl
+import com.itmo.basiclayout.buttons.presenter.ButtonsPresenter
 import com.itmo.basiclayout.buttons.presenter.ButtonsPresenterImpl
 import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
@@ -32,12 +33,14 @@ class ButtonsActivity : AppCompatActivity() {
 
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
-    private val buttonsController = ButtonsPresenterImpl(CoursePointsProviderImpl(baseContext))
+    private lateinit var buttonsPresenter : ButtonsPresenter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding = ActivityButtonsBinding.inflate(layoutInflater)
         setContentView(binding.root)
+
+        initializeDependencies()
 
         setListeners()
         initializeComponents()
@@ -45,26 +48,30 @@ class ButtonsActivity : AppCompatActivity() {
         initializeDrawer()
     }
 
+    private fun initializeDependencies() {
+        buttonsPresenter = ButtonsPresenterImpl(CoursePointsProviderImpl(baseContext))
+    }
+
     override fun onStop() {
         super.onStop()
-        buttonsController.saveCoursePoints()
+        buttonsPresenter.saveCoursePoints()
     }
 
     private fun initializeComponents() = binding.apply {
-        textViewCoursePoints.text = buttonsController.coursePoints.toString()
+        textViewCoursePoints.text = buttonsPresenter.coursePoints.toString()
     }
 
     private fun setListeners() = binding.apply {
         buttonCoursePointsDecrease.setOnClickListener {
-            textViewCoursePoints.text = buttonsController.decreaseCoursePoints().toString()
+            textViewCoursePoints.text = buttonsPresenter.decreaseCoursePoints().toString()
         }
 
         buttonCoursePointsIncrease.setOnClickListener {
-            textViewCoursePoints.text = buttonsController.increaseCoursePoints().toString()
+            textViewCoursePoints.text = buttonsPresenter.increaseCoursePoints().toString()
         }
 
         textViewCoursePoints.doOnTextChanged { _, _, _, _ ->
-            val color = buttonsController.getColorForCoursePoints()
+            val color = buttonsPresenter.getColorForCoursePoints()
 
             val newTextViewColor = ResourcesCompat.getColor(resources, color, null)
             if (newTextViewColor != textViewCoursePoints.currentTextColor)

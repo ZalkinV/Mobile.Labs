@@ -36,6 +36,6 @@ class ButtonsPresenterImpl(
         else -> R.color.green
     }
 
-    fun saveCoursePoints() =
+    override fun saveCoursePoints() =
         coursePointsProvider.save(coursePoints)
 }

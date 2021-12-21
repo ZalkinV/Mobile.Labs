@@ -5,4 +5,5 @@ interface ButtonsPresenter {
     fun decreaseCoursePoints(): Int
     fun increaseCoursePoints(): Int
     fun getColorForCoursePoints(): Int
+    fun saveCoursePoints()
 }
