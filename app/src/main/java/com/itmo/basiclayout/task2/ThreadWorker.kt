@@ -32,9 +32,9 @@ class ThreadWorker(
     }
 
     fun reset() {
+        stop()
         iteration = 0
         doWork(iteration)
-        stop()
     }
 
     fun increaseSpeed() {
