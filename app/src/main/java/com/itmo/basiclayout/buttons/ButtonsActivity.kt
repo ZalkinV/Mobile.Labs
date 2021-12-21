@@ -10,7 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.itmo.basiclayout.R
-import com.itmo.basiclayout.buttons.model.ButtonsPreferenceProviderImpl
+import com.itmo.basiclayout.buttons.model.CoursePointsProviderImpl
 import com.itmo.basiclayout.buttons.presenter.ButtonsPresenterImpl
 import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
@@ -32,7 +32,7 @@ class ButtonsActivity : AppCompatActivity() {
 
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
-    private val buttonsController = ButtonsPresenterImpl(ButtonsPreferenceProviderImpl(baseContext))
+    private val buttonsController = ButtonsPresenterImpl(CoursePointsProviderImpl(baseContext))
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
