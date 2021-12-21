@@ -13,6 +13,7 @@ import androidx.core.content.edit
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.itmo.basiclayout.R
+import com.itmo.basiclayout.buttons.presenter.ButtonsPresenterImpl
 import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
 import com.itmo.basiclayout.task2.Task2Activity
@@ -34,7 +35,8 @@ class ButtonsActivity : AppCompatActivity() {
     private lateinit var drawerToggle: ActionBarDrawerToggle
 
     private lateinit var preferences: SharedPreferences
-    private var coursePoints: Int = 0
+
+    private val buttonsController = ButtonsPresenterImpl()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -53,37 +55,30 @@ class ButtonsActivity : AppCompatActivity() {
         super.onStop()
 
         preferences.edit(commit = true) {
-            putInt(PreferenceConsts.COURSE_POINTS, coursePoints)
+            putInt(PreferenceConsts.COURSE_POINTS, buttonsController.coursePoints)
         }
     }
 
     private fun initializePreferences() {
         preferences = getSharedPreferences(PreferenceConsts.FILE_NAME, Context.MODE_PRIVATE)
-        coursePoints = preferences.getInt(PreferenceConsts.COURSE_POINTS, 0)
+        buttonsController.coursePoints = preferences.getInt(PreferenceConsts.COURSE_POINTS, 0)
     }
 
     private fun initializeComponents() = binding.apply {
-        textViewCoursePoints.text = coursePoints.toString()
+        textViewCoursePoints.text = buttonsController.coursePoints.toString()
     }
 
     private fun setListeners() = binding.apply {
         buttonCoursePointsDecrease.setOnClickListener {
-            if (coursePoints > CoursePointsConsts.MIN)
-                textViewCoursePoints.text = (--coursePoints).toString()
+            textViewCoursePoints.text = buttonsController.decreaseCoursePoints().toString()
         }
 
         buttonCoursePointsIncrease.setOnClickListener {
-            if (coursePoints < CoursePointsConsts.MAX)
-                textViewCoursePoints.text = (++coursePoints).toString()
+            textViewCoursePoints.text = buttonsController.increaseCoursePoints().toString()
         }
 
         textViewCoursePoints.doOnTextChanged { _, _, _, _ ->
-            val color = when {
-                coursePoints < CoursePointsConsts.MIN_MARK_C -> R.color.red
-                coursePoints < CoursePointsConsts.MIN_MARK_B -> R.color.orange
-                coursePoints < CoursePointsConsts.MIN_MARK_A -> R.color.yellow
-                else -> R.color.green
-            }
+            val color = buttonsController.getColorForCoursePoints()
 
             val newTextViewColor = ResourcesCompat.getColor(resources, color, null)
             if (newTextViewColor != textViewCoursePoints.currentTextColor)
