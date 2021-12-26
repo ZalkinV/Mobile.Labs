@@ -51,7 +51,7 @@ class CompanyGatewayImpl : CompanyGateway{
             val responseBody = response.body?.string()
                 ?: throw IOException("No response body from API")
 
-            gson.fromJson(responseBody, CompanyApiModel::class.java)
+            gson.fromJson(responseBody, CompanyApiResponse::class.java)
         }
 
         company.toEntity()
