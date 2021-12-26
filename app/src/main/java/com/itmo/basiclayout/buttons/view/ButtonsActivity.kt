@@ -18,7 +18,7 @@ import com.itmo.basiclayout.databinding.ActivityButtonsBinding
 import com.itmo.basiclayout.task2.Task2Activity
 import com.itmo.basiclayout.task3.company.ui.Task3Activity
 
-class ButtonsActivity : AppCompatActivity() {
+class ButtonsActivity : AppCompatActivity(), ActivityView {
 
     companion object {
         private const val logTag = "BUTTONS"
@@ -49,7 +49,7 @@ class ButtonsActivity : AppCompatActivity() {
     }
 
     private fun initializeDependencies() {
-        buttonsPresenter = ButtonsPresenterImpl(CoursePointsProviderImpl(baseContext))
+        buttonsPresenter = ButtonsPresenterImpl(this, CoursePointsProviderImpl(baseContext))
     }
 
     override fun onStop() {
@@ -61,13 +61,17 @@ class ButtonsActivity : AppCompatActivity() {
         textViewCoursePoints.text = buttonsPresenter.coursePoints.toString()
     }
 
+    override fun displayCoursePoints(coursePoints: String) = binding.apply {
+        textViewCoursePoints.text = coursePoints
+    }
+
     private fun setListeners() = binding.apply {
         buttonCoursePointsDecrease.setOnClickListener {
-            textViewCoursePoints.text = buttonsPresenter.decreaseCoursePoints().toString()
+            buttonsPresenter.onDecreaseCoursePointsButtonClick()
         }
 
         buttonCoursePointsIncrease.setOnClickListener {
-            textViewCoursePoints.text = buttonsPresenter.increaseCoursePoints().toString()
+            buttonsPresenter.onIncreaseCoursePointsButtonClick()
         }
 
         textViewCoursePoints.doOnTextChanged { _, _, _, _ ->

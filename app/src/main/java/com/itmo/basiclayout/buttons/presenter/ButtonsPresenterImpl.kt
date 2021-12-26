@@ -3,8 +3,10 @@ package com.itmo.basiclayout.buttons.presenter
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.buttons.CoursePointsConsts
 import com.itmo.basiclayout.buttons.dataAccess.CoursePointsProviderImpl
+import com.itmo.basiclayout.buttons.view.ActivityView
 
 class ButtonsPresenterImpl(
+    private val view: ActivityView,
     private val coursePointsProvider: CoursePointsProviderImpl
 ) : ButtonsPresenter {
 
@@ -17,17 +19,24 @@ class ButtonsPresenterImpl(
             }
         }
 
-    override fun decreaseCoursePoints() =
+    override fun onDecreaseCoursePointsButtonClick() {
         if (coursePoints > CoursePointsConsts.MIN)
             --coursePoints
         else
             coursePoints
 
-    override fun increaseCoursePoints() =
+        view.displayCoursePoints(coursePoints.toString())
+    }
+
+    override fun onIncreaseCoursePointsButtonClick() {
         if (coursePoints < CoursePointsConsts.MAX)
             ++coursePoints
         else
             coursePoints
+
+        view.displayCoursePoints(coursePoints.toString())
+    }
+
 
     override fun getColorForCoursePoints() = when {
         coursePoints < CoursePointsConsts.MIN_MARK_C -> R.color.red
