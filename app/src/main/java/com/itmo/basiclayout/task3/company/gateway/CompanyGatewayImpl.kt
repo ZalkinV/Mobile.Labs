@@ -6,7 +6,6 @@ import com.itmo.basiclayout.task3.company.domain.CompanyEntity
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import okhttp3.HttpUrl.Companion.toHttpUrl
-import okhttp3.Interceptor
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import okhttp3.logging.HttpLoggingInterceptor
@@ -32,7 +31,7 @@ class CompanyGatewayImpl : CompanyGateway{
 
     // Suppress as it is wrong in withContext: https://stackoverflow.com/questions/58680028/how-to-make-inappropriate-blocking-method-call-appropriate
     @Suppress("BlockingMethodInNonBlockingContext")
-    override suspend fun get(id: Int): CompanyEntity = withContext(Dispatchers.IO) {
+    override suspend fun getCompany(id: Int): CompanyEntity = withContext(Dispatchers.IO) {
 
         val requestUrl = Consts.COMPANY_GATEWAY_BASE_URL.toHttpUrl().newBuilder()
             .addPathSegment(PATH_SEGMENT)
