@@ -2,7 +2,7 @@ package com.itmo.basiclayout.buttons.presenter
 
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.buttons.CoursePointsConsts
-import com.itmo.basiclayout.buttons.model.CoursePointsProviderImpl
+import com.itmo.basiclayout.buttons.dataAccess.CoursePointsProviderImpl
 
 class ButtonsPresenterImpl(
     private val coursePointsProvider: CoursePointsProviderImpl

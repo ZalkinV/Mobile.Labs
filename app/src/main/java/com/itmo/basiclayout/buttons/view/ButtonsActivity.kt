@@ -10,7 +10,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle
 import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.itmo.basiclayout.R
-import com.itmo.basiclayout.buttons.model.CoursePointsProviderImpl
+import com.itmo.basiclayout.buttons.dataAccess.CoursePointsProviderImpl
 import com.itmo.basiclayout.buttons.presenter.ButtonsPresenter
 import com.itmo.basiclayout.buttons.presenter.ButtonsPresenterImpl
 import com.itmo.basiclayout.task1.Task1Activity

@@ -1,4 +1,4 @@
-package com.itmo.basiclayout.buttons.model
+package com.itmo.basiclayout.buttons.dataAccess
 
 import android.content.Context
 import android.content.SharedPreferences

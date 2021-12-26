@@ -1,4 +1,4 @@
-package com.itmo.basiclayout.buttons.model
+package com.itmo.basiclayout.buttons.dataAccess
 
 interface CoursePointsProvider {
     fun get(): Int
