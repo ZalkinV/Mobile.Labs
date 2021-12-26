@@ -5,7 +5,6 @@ import android.os.Bundle
 import android.util.Log
 import android.widget.Toast
 import androidx.lifecycle.lifecycleScope
-import com.itmo.basiclayout.R
 import com.itmo.basiclayout.databinding.ActivityTask3Binding
 import com.itmo.basiclayout.task3.company.Consts
 import com.itmo.basiclayout.task3.company.domain.CompanyEntity
@@ -33,17 +32,17 @@ class Task3Activity : AppCompatActivity() {
 
     private fun initializeListeners() = with(binding) {
         t3BtnLoad.setOnClickListener {
-            try {
-                lifecycleScope.launch {
-                    val company = companyInteractor.get(Consts.COMPANY_ID_TO_LOAD)
+            lifecycleScope.launch {
+                try {
+                    val company = companyInteractor.getCompany(Consts.COMPANY_ID_TO_LOAD)
                     displayCompanyInfo(company)
                 }
-            }
-            catch (e: Exception) {
-                val message = e.message ?: "Error occured"
+                catch (e: Exception) {
+                    val message = e.message ?: "Error occured"
 
-                Toast.makeText(baseContext, message, Toast.LENGTH_SHORT).show()
-                Log.e(LOG_TAG, message)
+                    Toast.makeText(baseContext, message, Toast.LENGTH_SHORT).show()
+                    Log.e(LOG_TAG, message)
+                }
             }
         }
     }
