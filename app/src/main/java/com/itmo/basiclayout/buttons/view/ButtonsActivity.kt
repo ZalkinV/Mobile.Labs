@@ -1,5 +1,6 @@
 package com.itmo.basiclayout.buttons.view
 
+import android.app.Activity
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
@@ -12,10 +13,7 @@ import com.itmo.basiclayout.R
 import com.itmo.basiclayout.buttons.dataAccess.CoursePointsProviderImpl
 import com.itmo.basiclayout.buttons.presenter.ButtonsPresenter
 import com.itmo.basiclayout.buttons.presenter.ButtonsPresenterImpl
-import com.itmo.basiclayout.task1.Task1Activity
 import com.itmo.basiclayout.databinding.ActivityButtonsBinding
-import com.itmo.basiclayout.task2.Task2Activity
-import com.itmo.basiclayout.task3.company.ui.Task3Activity
 
 class ButtonsActivity : AppCompatActivity(), ActivityView {
 
@@ -96,9 +94,9 @@ class ButtonsActivity : AppCompatActivity(), ActivityView {
 
         binding.navigationView.setNavigationItemSelectedListener {
             when (it.itemId) {
-                R.id.button_task1 -> openTask1Activity()
-                R.id.button_task2 -> openTask2Activity()
-                R.id.button_task3 -> openTask3Activity()
+                R.id.button_task1 -> buttonsPresenter.onTask1ButtonClicked()
+                R.id.button_task2 -> buttonsPresenter.onTask2ButtonClicked()
+                R.id.button_task3 -> buttonsPresenter.onTask3ButtonClicked()
                 else ->
                 {
                     Toast.makeText(this, "Not implemented, yet!", Toast.LENGTH_SHORT).show()
@@ -118,24 +116,10 @@ class ButtonsActivity : AppCompatActivity(), ActivityView {
         return super.onOptionsItemSelected(item)
     }
 
-    private fun openTask1Activity() {
-        Log.i(logTag, "Open Task1 activity")
+    override fun openActivity(activityClass: Class<out Activity>) {
+        Log.i(logTag, "Opening ${activityClass.simpleName}")
 
-        val intent = Intent(this, Task1Activity::class.java)
-        startActivity(intent)
-    }
-
-    private fun openTask2Activity() {
-        Log.i(logTag, "Open Task2 activity")
-
-        val intent = Intent(this, Task2Activity::class.java)
-        startActivity(intent)
-    }
-
-    private fun openTask3Activity() {
-        Log.i(logTag, "Open Task3 activity")
-
-        val intent = Intent(this, Task3Activity::class.java)
+        val intent = Intent(this, activityClass)
         startActivity(intent)
     }
 }

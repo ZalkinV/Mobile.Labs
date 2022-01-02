@@ -5,6 +5,9 @@ import com.itmo.basiclayout.R
 import com.itmo.basiclayout.buttons.CoursePointsConsts
 import com.itmo.basiclayout.buttons.dataAccess.CoursePointsProviderImpl
 import com.itmo.basiclayout.buttons.view.ActivityView
+import com.itmo.basiclayout.task1.Task1Activity
+import com.itmo.basiclayout.task2.Task2Activity
+import com.itmo.basiclayout.task3.company.ui.Task3Activity
 
 class ButtonsPresenterImpl(
     private val view: ActivityView,
@@ -48,4 +51,16 @@ class ButtonsPresenterImpl(
 
     override fun saveCoursePoints() =
         coursePointsProvider.save(coursePoints)
+
+    override fun onTask1ButtonClicked() {
+        view.openActivity(Task1Activity::class.java)
+    }
+
+    override fun onTask2ButtonClicked() {
+        view.openActivity(Task2Activity::class.java)
+    }
+
+    override fun onTask3ButtonClicked() {
+        view.openActivity(Task3Activity::class.java)
+    }
 }
