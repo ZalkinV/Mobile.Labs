@@ -1,5 +1,6 @@
 package com.itmo.basiclayout.buttons.presenter
 
+import androidx.core.content.res.ResourcesCompat
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.buttons.CoursePointsConsts
 import com.itmo.basiclayout.buttons.dataAccess.CoursePointsProviderImpl
@@ -11,19 +12,14 @@ class ButtonsPresenterImpl(
 ) : ButtonsPresenter {
 
     override var coursePoints: Int = coursePointsProvider.get()
-        set(value) {
-            field = when {
-                value < CoursePointsConsts.MIN -> CoursePointsConsts.MIN
-                value > CoursePointsConsts.MAX -> CoursePointsConsts.MAX
-                else -> value
-            }
-        }
+
+    override fun onInitialization() {
+        view.displayCoursePoints(coursePoints.toString())
+    }
 
     override fun onDecreaseCoursePointsButtonClick() {
         if (coursePoints > CoursePointsConsts.MIN)
             --coursePoints
-        else
-            coursePoints
 
         view.displayCoursePoints(coursePoints.toString())
     }
@@ -31,14 +27,19 @@ class ButtonsPresenterImpl(
     override fun onIncreaseCoursePointsButtonClick() {
         if (coursePoints < CoursePointsConsts.MAX)
             ++coursePoints
-        else
-            coursePoints
 
         view.displayCoursePoints(coursePoints.toString())
     }
 
+    override fun onCoursePointsTextChanged() {
+        val color = getColorForCoursePoints()
 
-    override fun getColorForCoursePoints() = when {
+        val newTextViewColor = ResourcesCompat.getColor(view.getResources(), color, null)
+        view.changeCoursePointsColor(newTextViewColor)
+    }
+
+
+    private fun getColorForCoursePoints() = when {
         coursePoints < CoursePointsConsts.MIN_MARK_C -> R.color.red
         coursePoints < CoursePointsConsts.MIN_MARK_B -> R.color.orange
         coursePoints < CoursePointsConsts.MIN_MARK_A -> R.color.yellow

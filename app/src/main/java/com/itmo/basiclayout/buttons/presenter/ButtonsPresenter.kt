@@ -1,9 +1,10 @@
 package com.itmo.basiclayout.buttons.presenter
 
 interface ButtonsPresenter {
-    var coursePoints: Int
+    val coursePoints: Int
     fun onDecreaseCoursePointsButtonClick()
     fun onIncreaseCoursePointsButtonClick()
-    fun getColorForCoursePoints(): Int
+    fun onCoursePointsTextChanged()
     fun saveCoursePoints()
+    fun onInitialization()
 }

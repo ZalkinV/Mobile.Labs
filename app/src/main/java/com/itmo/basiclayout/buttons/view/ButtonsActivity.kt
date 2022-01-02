@@ -7,7 +7,6 @@ import android.util.Log
 import android.view.MenuItem
 import android.widget.Toast
 import androidx.appcompat.app.ActionBarDrawerToggle
-import androidx.core.content.res.ResourcesCompat
 import androidx.core.widget.doOnTextChanged
 import com.itmo.basiclayout.R
 import com.itmo.basiclayout.buttons.dataAccess.CoursePointsProviderImpl
@@ -41,10 +40,8 @@ class ButtonsActivity : AppCompatActivity(), ActivityView {
         setContentView(binding.root)
 
         initializeDependencies()
-
         setListeners()
-        initializeComponents()
-
+        buttonsPresenter.onInitialization()
         initializeDrawer()
     }
 
@@ -57,12 +54,13 @@ class ButtonsActivity : AppCompatActivity(), ActivityView {
         buttonsPresenter.saveCoursePoints()
     }
 
-    private fun initializeComponents() = binding.apply {
-        textViewCoursePoints.text = buttonsPresenter.coursePoints.toString()
+    override fun displayCoursePoints(coursePoints: String) = with(binding) {
+        textViewCoursePoints.text = coursePoints
     }
 
-    override fun displayCoursePoints(coursePoints: String) = binding.apply {
-        textViewCoursePoints.text = coursePoints
+    override fun changeCoursePointsColor(newColor: Int) = with(binding) {
+        if (newColor != textViewCoursePoints.currentTextColor)
+            textViewCoursePoints.setTextColor(newColor)
     }
 
     private fun setListeners() = binding.apply {
@@ -75,11 +73,7 @@ class ButtonsActivity : AppCompatActivity(), ActivityView {
         }
 
         textViewCoursePoints.doOnTextChanged { _, _, _, _ ->
-            val color = buttonsPresenter.getColorForCoursePoints()
-
-            val newTextViewColor = ResourcesCompat.getColor(resources, color, null)
-            if (newTextViewColor != textViewCoursePoints.currentTextColor)
-                textViewCoursePoints.setTextColor(newTextViewColor)
+            buttonsPresenter.onCoursePointsTextChanged()
         }
     }
 

@@ -1,8 +1,10 @@
 package com.itmo.basiclayout.buttons.view
 
-import com.itmo.basiclayout.databinding.ActivityButtonsBinding
+import android.content.res.Resources
 
 interface ActivityView {
-    fun displayCoursePoints(coursePoints: String): ActivityButtonsBinding
+    fun displayCoursePoints(coursePoints: String)
+    fun changeCoursePointsColor(newColor: Int)
 
+    fun getResources(): Resources
 }
